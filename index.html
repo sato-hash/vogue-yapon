@@ -844,7 +844,7 @@ body {
 }
 
 .exp-side {
-  display: grid; grid-template-rows: 1fr 1fr;
+  display: grid; grid-template-rows: 1fr 1fr 1fr;
   gap: 2px;
 }
 .exp-card-sm {
@@ -874,6 +874,42 @@ body {
 .exp-sm-sub {
   font-size: 0.55rem; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--gold-lt); margin-top: 0.2rem;
+}
+
+/* exp-card-lg — reused for feature-spread photo stack */
+.exp-card-lg {
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.exp-card-lg img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  transition: transform 0.8s var(--ease);
+}
+.exp-card-lg:hover img { transform: scale(1.04); }
+.exp-card-lg-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(12,12,12,0.78) 0%, transparent 55%);
+}
+.exp-card-lg-info {
+  position: absolute; bottom: 0; padding: 2rem;
+}
+.exp-card-lg-jp {
+  font-family: var(--f-jp); font-size: 3rem;
+  color: rgba(255,255,255,0.12); display: block; line-height: 1;
+}
+.exp-card-lg-question {
+  font-family: var(--f-serif); font-style: italic;
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem); font-weight: 400;
+  color: #fff; line-height: 1.4; margin-top: 0.4rem; max-width: 320px;
+}
+.exp-card-lg-sub {
+  font-size: 0.52rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold-lt); margin-top: 0.6rem;
+}
+
+.feature-photo-stack {
+  display: grid; grid-template-rows: 1fr 1fr;
+  height: 100%; gap: 2px;
 }
 
 /* ═══════════════════════════════
@@ -1278,53 +1314,67 @@ footer {
 ══════════════════════════════ -->
 <section class="feature-spread">
   <div class="feature-photo reveal">
-    <!--
-      📸 PHOTO SLOT [feature-L]
-      Sujet idéal : photo éditoriale forte — femme en kimono, rue de Kyoto,
-      temple sous les cerisiers, ou panorama Fuji
-      Format : portrait 2:3 recommandé
-      Remplacer src par : "photos/feature-editorial.jpg"
-    -->
-    <img data-photo-slot="feature-L"
-         src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=90&fit=crop&crop=top"
-         alt="Киото, душа традиционной Японии"
-         class="photo">
-    <span class="feature-photo-caption">Киото · Квартал Хигасияма</span>
+    <div class="feature-photo-stack">
+      <div class="exp-card-lg">
+        <img data-photo-slot="feature-jizo"
+             src="img/exp-jizo.png"
+             alt="Статуя Дзидзо в японском осеннем лесу"
+             class="photo">
+        <div class="exp-card-lg-overlay"></div>
+        <div class="exp-card-lg-info">
+          <span class="exp-card-lg-jp">地蔵</span>
+          <p class="exp-card-lg-question">Вы когда-нибудь бывали в стране, где религиозные верования полностью отличаются от привычных?</p>
+          <p class="exp-card-lg-sub">Дзидзо Босацу · 地蔵菩薩 · Духовные традиции Японии</p>
+        </div>
+      </div>
+      <div class="exp-card-lg">
+        <img data-photo-slot="feature-washlet"
+             src="img/exp-washlet.png"
+             alt="Японская ванная комната с унитазом-биде TOTO Washlet"
+             class="photo">
+        <div class="exp-card-lg-overlay"></div>
+        <div class="exp-card-lg-info">
+          <span class="exp-card-lg-jp">洗</span>
+          <p class="exp-card-lg-question">Умеете ли вы пользоваться японским туалетом?</p>
+          <p class="exp-card-lg-sub">TOTO Washlet · 洗浄便座 · Инновации комфорта</p>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="feature-text reveal reveal-d1">
     <p class="feature-kicker">
       <span class="feature-kicker-line"></span>
-      Наш сервис
+      Курьёзы Японии
     </p>
     <h2 class="feature-heading">
-      Искусственный интеллект<br>на службе<br><em>вашего приключения</em>
+      Япония удивит вас<br>— <em>на каждом шагу</em>
     </h2>
     <p class="feature-body">
-      Заполните наш опросник всего один раз. Менее чем за 60 секунд наш ИИ анализирует ваши предпочтения — продолжительность, сезон, бюджет, интересы — и генерирует полный первоначальный маршрут с визуальным обзором вашего путешествия.
+      От вездесущих духовных традиций до самых технологичных туалетов в мире — Япония умеет поражать. Наш консьерж подготовит вас к этим открытиям ещё до отъезда.
     </p>
     <p class="feature-body">
-      Этот начальный план затем проверяется и обогащается нашим консьержем, который знает Японию до мельчайших деталей.
+      Понимание культурных различий — ключ к подлинному путешествию. Мы делаем так, чтобы каждая неожиданность становилась встречей, а не растерянностью.
     </p>
     <div class="feature-stats">
       <div class="fstat">
-        <div class="fstat-num">60<span class="fstat-unit">s</span></div>
-        <div class="fstat-label">Для создания вашего маршрута</div>
+        <div class="fstat-num">8<span class="fstat-unit">M</span></div>
+        <div class="fstat-label">Статуй Дзидзо по всей Японии</div>
       </div>
       <div class="fstat">
-        <div class="fstat-num">10<span class="fstat-unit">€</span></div>
-        <div class="fstat-label">Чтобы начать с консьержем</div>
+        <div class="fstat-num">80<span class="fstat-unit">%</span></div>
+        <div class="fstat-label">Японцев исповедуют синтоизм и буддизм</div>
       </div>
       <div class="fstat">
-        <div class="fstat-num">24<span class="fstat-unit">h</span></div>
-        <div class="fstat-label">Телефонная поддержка в Японии</div>
+        <div class="fstat-num">72<span class="fstat-unit">M</span></div>
+        <div class="fstat-label">Ванных комнат оснащены Washlet в Японии</div>
       </div>
       <div class="fstat">
-        <div class="fstat-num">100<span class="fstat-unit">%</span></div>
-        <div class="fstat-label">Полностью персонализированные маршруты</div>
+        <div class="fstat-num">1</div>
+        <div class="fstat-label">Путеводитель по культуре от вашего консьержа</div>
       </div>
     </div>
     <a href="#plan" class="btn-cover btn-cover-primary" style="width:fit-content">
-      Планировать бесплатно →
+      Планировать путешествие →
     </a>
   </div>
 </section>
@@ -1619,15 +1669,9 @@ footer {
 
     <!-- Main large card -->
     <div class="exp-main">
-      <!--
-        📸 PHOTO SLOT [exp-main]
-        Sujet : Чайная церемония (chado) — mains, bol, gestes
-        Format : portrait vertical
-        Remplacer src par : "photos/exp-chado.jpg"
-      -->
       <img data-photo-slot="exp-main"
-           src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=1000&q=85&fit=crop&crop=center"
-           alt="Чайная церемония japonaise - Chado"
+           src="img/culture/sadou.png"
+           alt="Чайная церемония японская - Чадо"
            class="photo">
       <div class="exp-main-overlay"></div>
       <div class="exp-main-info">
@@ -1641,13 +1685,8 @@ footer {
     <!-- Side cards -->
     <div class="exp-side">
       <div class="exp-card-sm">
-        <!--
-          📸 PHOTO SLOT [exp-2]
-          Sujet : Femme en kimono, Kyoto ou Kanazawa
-          Remplacer src par : "photos/exp-kimono.jpg"
-        -->
         <img data-photo-slot="exp-2"
-             src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=85&fit=crop&crop=top"
+             src="img/culture/kimono.png"
              alt="Традиционное японское кимоно"
              class="photo">
         <div class="exp-card-sm-overlay"></div>
@@ -1658,20 +1697,27 @@ footer {
         </div>
       </div>
       <div class="exp-card-sm">
-        <!--
-          📸 PHOTO SLOT [exp-3]
-          Sujet : Temple zen, jardin de pierres, méditation
-          Remplacer src par : "photos/exp-zen.jpg"
-        -->
         <img data-photo-slot="exp-3"
-             src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=85&fit=crop&crop=center"
-             alt="Дзен-медитация dans un temple japonais"
+             src="img/culture/zen.png"
+             alt="Дзен-медитация в японском храме"
              class="photo">
         <div class="exp-card-sm-overlay"></div>
         <div class="exp-card-sm-info">
           <span class="exp-sm-jp">禅</span>
           <p class="exp-sm-title">Дзен-медитация</p>
           <p class="exp-sm-sub">Дзадзэн · Сады камней · 禅</p>
+        </div>
+      </div>
+      <div class="exp-card-sm">
+        <img data-photo-slot="exp-4"
+             src="img/culture/sumo.jpg"
+             alt="Борьба сумо — японское боевое искусство"
+             class="photo">
+        <div class="exp-card-sm-overlay"></div>
+        <div class="exp-card-sm-info">
+          <span class="exp-sm-jp">相</span>
+          <p class="exp-sm-title">Борьба Сумо</p>
+          <p class="exp-sm-sub">Боевое искусство · 相撲 · Национальный спорт</p>
         </div>
       </div>
     </div>
@@ -1719,7 +1765,7 @@ footer {
       Si vous avez une photo d'un client content au Japon,
       vous pouvez la placer ici. Sinon la gradient par défaut suffit.
     -->
-    <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=700&q=85&fit=crop&crop=top"
+    <img src="img/culture/sushi.png"
          alt="Voyage au Japon — expérience client"
          class="photo"
          style="aspect-ratio:3/4">
