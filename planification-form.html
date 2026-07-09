@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créer Mon Voyage — Votre Japon sur Mesure</title>
+<meta name="description" content="Créez gratuitement votre itinéraire de voyage au Japon en 60 secondes grâce à notre IA, puis affinez-le avec un concierge francophone.">
+<link rel="canonical" href="https://japon.progic.jp/planification-form.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Votre Japon sur Mesure">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Créer Mon Voyage — Votre Japon sur Mesure">
+<meta property="og:description" content="Créez gratuitement votre itinéraire de voyage au Japon en 60 secondes grâce à notre IA, puis affinez-le avec un concierge francophone.">
+<meta property="og:url" content="https://japon.progic.jp/planification-form.html">
+<meta property="og:image" content="https://japon.progic.jp/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Créer Mon Voyage — Votre Japon sur Mesure">
+<meta name="twitter:description" content="Créez gratuitement votre itinéraire de voyage au Japon en 60 secondes grâce à notre IA, puis affinez-le avec un concierge francophone.">
+<meta name="twitter:image" content="https://japon.progic.jp/img/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { width:100%; overflow-x:hidden; background:#f5f0e8; color:#0f0e0b; font-family:'Jost',sans-serif; }
+
+.nav-spacer { height:58px; }
+
+/* ── HERO ── */
+.hero {
+  position:relative;
+  display:flex;
+  align-items:stretch;
+  background:#0a0908;
+  height:calc(100vh - 58px - 56px);
+}
+.hero-left {
+  flex:0 0 38%;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:3rem 3% 3rem 6%;
+  background:linear-gradient(to right, #0a0908 80%, transparent 100%);
+  position:relative; z-index:1;
+}
+.hero-right {
+  flex:1;
+  display:flex; flex-direction:column;
+  overflow:hidden;
+}
+.hero-right-row {
+  flex:1; overflow:hidden; line-height:0; font-size:0;
+}
+.hero-right-row img {
+  width:100%; height:100%;
+  object-fit:cover; object-position:center top;
+  display:block;
+  filter:brightness(.75) saturate(.9);
+}
+.hero-eyebrow { display:flex; align-items:center; gap:.6rem; margin-bottom:1rem; }
+.hero-eyebrow-line { width:22px; height:1px; background:#a8834a; }
+.hero-eyebrow-text { font-size:.52rem; letter-spacing:.28em; text-transform:uppercase; color:#c9a96e; }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,4rem); font-weight:300; line-height:1.05; color:#fff; margin-bottom:.9rem; }
+.hero h1 em { font-style:italic; color:#c9a96e; display:block; }
+.hero-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.9rem; color:rgba(255,255,255,.5); line-height:1.8; }
+
+/* ── SHINKANSEN STRIP ── */
+.shinkansen-strip {
+  width:100%; height:200px;
+  overflow:hidden; position:relative;
+  background:#0a0908;
+}
+.shinkansen-strip img {
+  width:100%; height:100%;
+  object-fit:cover; object-position:center 55%;
+  display:block;
+  filter:brightness(.65) saturate(.9);
+}
+.shinkansen-strip-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(10,9,6,.55) 0%, transparent 25%, transparent 75%, rgba(10,9,6,.55) 100%);
+}
+.shinkansen-caption {
+  position:absolute; bottom:1.2rem; right:6%;
+  font-size:.48rem; letter-spacing:.22em; text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+}
+
+/* ── STEPS BAR ── */
+.steps-bar {
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,.07);
+  padding:0 6%;
+  position:sticky; top:58px; z-index:90;
+}
+.steps { display:flex; }
+.step-item {
+  flex:1; display:flex; align-items:center; gap:.6rem;
+  padding:.9rem 0;
+  border-bottom:2px solid transparent;
+  opacity:.4; transition:opacity .3s, border-color .3s;
+  cursor:pointer;
+}
+.step-item.active { opacity:1; border-bottom-color:#a8834a; }
+.step-item.done { opacity:.65; }
+.step-num {
+  width:22px; height:22px; border-radius:50%;
+  background:#f0ebe0; border:1px solid rgba(0,0,0,.1);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.5rem; font-weight:600; color:#8a8580; flex-shrink:0;
+  transition:all .3s;
+}
+.step-item.active .step-num { background:#a8834a; border-color:#a8834a; color:#fff; }
+.step-item.done .step-num { background:#3a6040; border-color:#3a6040; color:#fff; }
+.step-label { font-size:.5rem; letter-spacing:.12em; text-transform:uppercase; color:#0f0e0b; }
+
+/* ── FORM AREA ── */
+.form-area { padding:4rem 6% 6rem; max-width:880px; margin:0 auto; }
+.form-step { display:none; animation:fadeUp .4s ease; }
+.form-step.active { display:block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+.step-heading { margin-bottom:2.5rem; }
+.step-eyebrow { font-size:.48rem; letter-spacing:.25em; text-transform:uppercase; color:#a8834a; margin-bottom:.5rem; }
+.step-heading h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,3vw,2.8rem); font-weight:300; line-height:1.1; }
+.step-heading h2 em { font-style:italic; }
+.step-heading p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.92rem; color:#8a8580; margin-top:.4rem; line-height:1.7; }
+
+/* Fields */
+.field-group { margin-bottom:1.8rem; }
+.field-label { display:block; font-size:.52rem; letter-spacing:.18em; text-transform:uppercase; color:#6a6460; margin-bottom:.55rem; }
+.req { color:#c9607a; }
+.field-input, .field-select, .field-textarea {
+  width:100%; padding:.85rem 1rem;
+  border:1px solid rgba(0,0,0,.12); background:#fff;
+  font-family:'Jost',sans-serif; font-size:.85rem; color:#0f0e0b;
+  outline:none; transition:border-color .2s, box-shadow .2s;
+  appearance:none; border-radius:0;
+}
+.field-input:focus, .field-select:focus, .field-textarea:focus {
+  border-color:#a8834a;
+  box-shadow:0 0 0 3px rgba(168,131,74,.1);
+}
+.field-textarea { resize:vertical; min-height:90px; line-height:1.6; }
+.field-select {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a8580'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 1rem center; padding-right:2.5rem;
+}
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+.field-row-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.2rem; }
+
+/* Theme cards */
+.theme-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(0,0,0,.08); }
+.theme-card {
+  background:#fff; padding:1.4rem 1.2rem; cursor:pointer;
+  transition:background .2s; position:relative; user-select:none;
+}
+.theme-card:hover { background:#faf6ef; }
+.theme-card.selected { background:#faf6ef; }
+.theme-card.selected::after { content:'✓'; position:absolute; top:.7rem; right:.8rem; font-size:.7rem; color:#a8834a; font-weight:700; }
+.theme-icon { font-size:1.4rem; margin-bottom:.5rem; }
+.theme-name { font-family:'Cormorant Garamond',serif; font-size:.95rem; color:#0f0e0b; margin-bottom:.2rem; }
+.theme-desc { font-size:.52rem; color:#8a8580; line-height:1.5; }
+
+/* Budget */
+.budget-display { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:#0f0e0b; margin-bottom:1rem; text-align:center; }
+.budget-display span { font-size:.9rem; color:#8a8580; font-style:italic; }
+.budget-slider { width:100%; height:3px; background:#e0d8cc; appearance:none; outline:none; cursor:pointer; }
+.budget-slider::-webkit-slider-thumb { appearance:none; width:22px; height:22px; background:#a8834a; border-radius:50%; cursor:pointer; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.2); }
+.budget-labels { display:flex; justify-content:space-between; margin-top:.6rem; }
+.budget-labels span { font-size:.46rem; letter-spacing:.1em; text-transform:uppercase; color:#b0a898; }
+
+/* Budget preference radio */
+.budget-options { display:flex; flex-direction:column; margin-top:1.2rem; border-top:1px solid rgba(0,0,0,.09); }
+.budget-opt { display:flex; align-items:center; gap:.9rem; padding:.85rem 0; border-bottom:1px solid rgba(0,0,0,.07); cursor:pointer; user-select:none; }
+.budget-opt input[type="radio"] { display:none; }
+.budget-opt-circle { flex-shrink:0; width:16px; height:16px; border-radius:50%; border:1.5px solid #c8c0b4; background:#fff; transition:all .2s; }
+.budget-opt:has(input:checked) .budget-opt-circle { border-color:#a8834a; background:#a8834a; }
+.budget-opt-body { display:flex; flex-direction:column; gap:.15rem; }
+.budget-opt-label { font-size:.6rem; letter-spacing:.08em; text-transform:uppercase; color:#3a3530; }
+.budget-opt-jp { font-family:'Noto Serif JP',serif; font-size:.75rem; color:#a8834a; opacity:.7; }
+
+/* Destination grid */
+.dest-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(0,0,0,.07); margin-top:.8rem; }
+.dest-item { cursor:pointer; user-select:none; }
+.dest-item input[type="checkbox"] { display:none; }
+.dest-inner { display:grid; grid-template-columns:14px 1fr; grid-template-rows:auto auto auto; column-gap:.6rem; row-gap:.1rem; background:#faf8f4; border-top:2px solid transparent; padding:.9rem .8rem; transition:all .2s; align-items:start; }
+.dest-item:has(input:checked) .dest-inner { background:#fff; border-top-color:#a8834a; }
+.dest-checkbox { grid-row:1; grid-column:1; align-self:center; width:14px; height:14px; border:1.5px solid #c8c0b4; border-radius:2px; position:relative; transition:all .2s; }
+.dest-item:has(input:checked) .dest-checkbox { background:#a8834a; border-color:#a8834a; }
+.dest-item:has(input:checked) .dest-checkbox::after { content:''; position:absolute; left:3px; top:1px; width:5px; height:8px; border:1.5px solid #fff; border-left:none; border-top:none; transform:rotate(45deg); }
+.dest-jp { grid-row:1; grid-column:2; font-family:'Noto Serif JP',serif; font-size:.85rem; color:rgba(168,131,74,.5); line-height:1; }
+.dest-name { grid-row:2; grid-column:2; font-family:'Cormorant Garamond',serif; font-size:.95rem; color:#1a1814; }
+.dest-desc { grid-row:3; grid-column:2; font-size:.48rem; letter-spacing:.07em; text-transform:uppercase; color:#8a8580; margin-top:.1rem; }
+
+/* Destination radio list */
+.dest-radios { display:flex; flex-direction:column; border-top:1px solid rgba(0,0,0,.09); }
+.dest-radio { display:flex; align-items:center; gap:.9rem; padding:.9rem 0; border-bottom:1px solid rgba(0,0,0,.07); cursor:pointer; user-select:none; }
+.dest-radio input[type="radio"] { display:none; }
+.dest-radio-circle { flex-shrink:0; width:16px; height:16px; border-radius:50%; border:1.5px solid #c8c0b4; background:#fff; transition:all .2s; }
+.dest-radio:has(input:checked) .dest-radio-circle { border-color:#a8834a; background:#a8834a; }
+.dest-radio-jp { flex-shrink:0; font-family:'Noto Serif JP',serif; font-size:1.05rem; color:#a8834a; opacity:.5; width:1.8rem; text-align:center; transition:opacity .2s; }
+.dest-radio:has(input:checked) .dest-radio-jp { opacity:1; }
+.dest-radio-body { display:flex; flex-direction:column; gap:.15rem; }
+.dest-radio-name { font-family:'Cormorant Garamond',serif; font-size:1rem; color:#1a1814; }
+.dest-radio-desc { font-size:.48rem; letter-spacing:.07em; text-transform:uppercase; color:#8a8580; }
+
+/* Email block */
+.email-block { background:#fff; border:1px solid rgba(0,0,0,.08); padding:2rem 2rem 1.5rem; margin-bottom:2rem; }
+.email-block-title { font-family:'Cormorant Garamond',serif; font-size:1.15rem; margin-bottom:.3rem; }
+.email-block-sub { font-size:.58rem; color:#8a8580; margin-bottom:1.4rem; line-height:1.7; }
+
+/* Nav buttons */
+.form-nav { display:flex; justify-content:space-between; align-items:center; margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(0,0,0,.07); }
+.btn-prev { padding:.8rem 1.8rem; border:1px solid rgba(0,0,0,.14); background:none; cursor:pointer; font-family:'Jost',sans-serif; font-size:.54rem; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:#6a6460; transition:all .2s; }
+.btn-prev:hover { border-color:#0f0e0b; color:#0f0e0b; }
+.btn-next { padding:.9rem 2.2rem; background:#a8834a; border:none; cursor:pointer; font-family:'Jost',sans-serif; font-size:.56rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:#fff; transition:all .3s; }
+.btn-next:hover { background:#7a5f32; transform:translateY(-2px); box-shadow:0 6px 20px rgba(168,131,74,.3); }
+.btn-generate { padding:1rem 2.8rem; background:#0f0e0b; border:none; cursor:pointer; font-family:'Jost',sans-serif; font-size:.58rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:#fff; transition:all .3s; }
+.btn-generate:hover { background:#2a2820; transform:translateY(-2px); }
+
+/* ── RESULT ── */
+.result-area { display:none; padding:4rem 6% 6rem; max-width:880px; margin:0 auto; }
+.result-area.active { display:block; animation:fadeUp .5s ease; }
+.result-header { text-align:center; margin-bottom:3rem; padding-bottom:2rem; border-bottom:1px solid rgba(0,0,0,.08); }
+.result-eyebrow { font-size:.5rem; letter-spacing:.28em; text-transform:uppercase; color:#a8834a; margin-bottom:.6rem; }
+.result-header h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3.5vw,3rem); font-weight:300; }
+.result-header h2 em { font-style:italic; color:#a8834a; }
+
+.loading-wrap { text-align:center; padding:5rem 0; }
+.spinner { width:40px; height:40px; border:2px solid rgba(168,131,74,.2); border-top-color:#a8834a; border-radius:50%; animation:spin 1s linear infinite; margin:0 auto 1.5rem; }
+@keyframes spin { to{transform:rotate(360deg)} }
+.loading-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:#8a8580; }
+
+.email-sent { background:#f0f7f3; border:1px solid rgba(42,96,64,.15); padding:1.1rem 1.5rem; display:flex; align-items:center; gap:1rem; margin-bottom:2rem; }
+.email-sent-icon { font-size:1.2rem; }
+.email-sent-text { font-size:.63rem; color:#2a6040; line-height:1.6; }
+.email-sent-text strong { display:block; font-size:.68rem; margin-bottom:.15rem; }
+
+.plan-card { background:#fff; border:1px solid rgba(0,0,0,.07); padding:2.5rem; margin-bottom:2rem; font-family:'Cormorant Garamond',serif; font-size:.95rem; line-height:1.9; color:#2a2820; }
+.plan-img-strip { width:100%; height:220px; object-fit:cover; display:block; margin:1.8rem 0 1.2rem; filter:brightness(.92) saturate(.9); }
+.plan-img-caption { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:#a8834a; margin-bottom:1.5rem; display:block; }
+.plan-card h3 { font-size:1.05rem; font-weight:400; margin:1.4rem 0 .4rem; color:#0f0e0b; }
+.plan-card h3:first-child { margin-top:0; }
+.plan-card strong { font-weight:500; color:#0f0e0b; }
+.plan-card ul { padding-left:1.2rem; margin:.4rem 0 .8rem; }
+.plan-card li { margin-bottom:.25rem; }
+
+.result-actions { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:2.5rem; }
+.btn-concierge { padding:.9rem 2.2rem; background:#0f0e0b; border:none; cursor:pointer; font-family:'Jost',sans-serif; font-size:.56rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:#fff; text-decoration:none; display:inline-block; transition:all .3s; }
+.btn-concierge:hover { background:#2a2820; transform:translateY(-2px); }
+.result-note { text-align:center; font-size:.58rem; color:#8a8580; margin-top:1.2rem; line-height:1.7; }
+
+/* ── BOTTOM CTA ── */
+.bottom-cta { background:#0f0e0b; padding:4rem 6%; display:flex; align-items:center; justify-content:space-between; gap:3rem; flex-wrap:wrap; }
+.bc-left { flex:1; min-width:260px; }
+.bc-eyebrow { display:flex; align-items:center; gap:.5rem; font-size:.48rem; letter-spacing:.22em; text-transform:uppercase; color:#a8834a; margin-bottom:.7rem; }
+.bc-line { width:16px; height:1px; background:#a8834a; }
+.bc-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,2.5vw,2.2rem); font-weight:300; color:#fff; line-height:1.2; }
+.bc-title em { font-style:italic; color:#c9a96e; }
+.bc-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.85rem; color:rgba(255,255,255,.35); margin-top:.5rem; }
+.bc-btn { padding:1rem 2.2rem; background:#a8834a; color:#fff; text-decoration:none; font-family:'Jost',sans-serif; font-size:.56rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; display:inline-block; transition:all .3s; white-space:nowrap; }
+.bc-btn:hover { filter:brightness(1.15); transform:translateY(-2px); }
+
+/* ── FOOTER ── */
+.mini-footer { background:#0f0e0b; border-top:1px solid rgba(255,255,255,.06); padding:1.6rem 6%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.mf-logo { font-family:'Cormorant Garamond',serif; font-size:.92rem; color:#fff; text-decoration:none; }
+.mf-logo em { font-style:italic; color:#a8834a; }
+.mf-links { display:flex; gap:1.4rem; }
+.mf-links a { font-size:.52rem; letter-spacing:.13em; text-transform:uppercase; color:rgba(255,255,255,.25); text-decoration:none; transition:color .2s; }
+.mf-links a:hover { color:#c9a96e; }
+.mf-copy { font-size:.5rem; color:rgba(255,255,255,.15); }
+
+@media(max-width:700px) { .field-row,.field-row-3{grid-template-columns:1fr} .theme-grid{grid-template-columns:1fr 1fr} .step-label{display:none} }
+@media(max-width:480px) { .theme-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<script src="nav-shared.js"></script>
+<div class="nav-spacer"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      <span class="hero-eyebrow-text">Planification · Création de votre voyage</span>
+    </div>
+    <h1>Créer mon voyage<em>sur mesure</em></h1>
+    <p class="hero-sub">Répondez à quelques questions. Notre IA compose un premier itinéraire personnalisé, envoyé directement dans votre boîte mail — gratuitement.</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-row"><img src="img/embedded/emb-4903f5fbda.jpg" alt="Voyageurs au Japon"></div>
+    <div class="hero-right-row"><img src="img/embedded/emb-a212b589ce.jpg" alt="Shinkansen Nozomi"></div>
+  </div>
+</section>
+
+<!-- ═══ STEPS BAR ═══ -->
+<div class="steps-bar">
+  <div class="steps">
+    <div class="step-item active" id="si-1"><div class="step-num">1</div><span class="step-label">Dates & Groupe</span></div>
+    <div class="step-item" id="si-2"><div class="step-num">2</div><span class="step-label">Thèmes & Budget</span></div>
+    <div class="step-item" id="si-3"><div class="step-num">3</div><span class="step-label">Envoi</span></div>
+  </div>
+</div>
+
+<!-- ═══ FORM ═══ -->
+<div class="form-area" id="formArea">
+
+  <!-- STEP 1 -->
+  <div class="form-step active" id="fs-1">
+    <div class="step-heading">
+      <div class="step-eyebrow">Étape 1 sur 3</div>
+      <h2>Dates & <em>composition du groupe</em></h2>
+      <p>Quand souhaitez-vous partir, et avec qui ?</p>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label class="field-label">Date de départ <span class="req">*</span></label>
+        <input type="date" class="field-input" id="dep-date">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Durée du séjour <span class="req">*</span></label>
+        <select class="field-select" id="duration">
+          <option value="">Sélectionnez</option>
+          <option value="5 jours">5 jours</option>
+          <option value="7 jours">7 jours</option>
+          <option value="10 jours">10 jours</option>
+          <option value="14 jours">14 jours</option>
+          <option value="21 jours">21 jours</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row-3">
+      <div class="field-group">
+        <label class="field-label">Adultes <span class="req">*</span></label>
+        <select class="field-select" id="adults">
+          <option value="1 adulte">1 personne</option>
+          <option value="2 adultes" selected>2 personnes</option>
+          <option value="3 adultes">3 personnes</option>
+          <option value="4 adultes">4 personnes</option>
+          <option value="5 adultes ou plus">5 personnes +</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Enfants</label>
+        <select class="field-select" id="children">
+          <option value="sans enfant">Aucun</option>
+          <option value="1 enfant">1 enfant</option>
+          <option value="2 enfants">2 enfants</option>
+          <option value="3 enfants ou plus">3 enfants +</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Tranche d'âge</label>
+        <select class="field-select" id="age">
+          <option value="20-30 ans">20–30 ans</option>
+          <option value="30-40 ans" selected>30–40 ans</option>
+          <option value="40-50 ans">40–50 ans</option>
+          <option value="50-60 ans">50–60 ans</option>
+          <option value="60 ans et plus">60 ans +</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Avez-vous déjà visité le Japon ?</label>
+      <select class="field-select" id="experience">
+        <option value="premier voyage au Japon">Non, c'est mon premier voyage</option>
+        <option value="déjà visité une fois">Oui, une fois</option>
+        <option value="plusieurs voyages au Japon">Oui, plusieurs fois</option>
+        <option value="connaisseur du Japon">Je connais bien le Japon</option>
+      </select>
+    </div>
+    <div class="form-nav">
+      <div></div>
+      <button class="btn-next" onclick="goStep(2)">Étape suivante →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="form-step" id="fs-2">
+    <div class="step-heading">
+      <div class="step-eyebrow">Étape 2 sur 3</div>
+      <h2>Thèmes & <em>budget</em></h2>
+      <p>Sélectionnez les thèmes qui vous inspirent et indiquez votre budget.</p>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Destination souhaitée</label>
+      <div class="dest-radios">
+        <label class="dest-radio">
+          <input type="radio" name="theme" value="Kyoto · Nara — Les anciennes capitales">
+          <span class="dest-radio-circle"></span>
+          <span class="dest-radio-jp">古都</span>
+          <span class="dest-radio-body">
+            <span class="dest-radio-name">Kyoto · Nara</span>
+            <span class="dest-radio-desc">Les anciennes capitales</span>
+          </span>
+        </label>
+        <label class="dest-radio">
+          <input type="radio" name="theme" value="Hiroshima · Miyajima — Mémoire & torii flottant">
+          <span class="dest-radio-circle"></span>
+          <span class="dest-radio-jp">原爆</span>
+          <span class="dest-radio-body">
+            <span class="dest-radio-name">Hiroshima · Miyajima</span>
+            <span class="dest-radio-desc">Mémoire &amp; torii flottant</span>
+          </span>
+        </label>
+        <label class="dest-radio">
+          <input type="radio" name="theme" value="Tokyo · Hakone · Nikko — Mégapole & nature proche">
+          <span class="dest-radio-circle"></span>
+          <span class="dest-radio-jp">都市</span>
+          <span class="dest-radio-body">
+            <span class="dest-radio-name">Tokyo · Hakone · Nikko</span>
+            <span class="dest-radio-desc">Mégapole &amp; nature proche</span>
+          </span>
+        </label>
+        <label class="dest-radio">
+          <input type="radio" name="theme" value="Hakuba · Niseko — Ski & poudreuse japonaise">
+          <span class="dest-radio-circle"></span>
+          <span class="dest-radio-jp">雪山</span>
+          <span class="dest-radio-body">
+            <span class="dest-radio-name">Hakuba · Niseko</span>
+            <span class="dest-radio-desc">Ski &amp; poudreuse japonaise</span>
+          </span>
+        </label>
+        <label class="dest-radio">
+          <input type="radio" name="theme" value="Okinawa · Miyakojima — Mer & coraux tropicaux">
+          <span class="dest-radio-circle"></span>
+          <span class="dest-radio-jp">珊瑚</span>
+          <span class="dest-radio-body">
+            <span class="dest-radio-name">Okinawa · Miyakojima</span>
+            <span class="dest-radio-desc">Mer &amp; coraux tropicaux</span>
+          </span>
+        </label>
+        <label class="dest-radio">
+          <input type="radio" name="theme" value="Anciens chemins — Randonnée sur les voies historiques">
+          <span class="dest-radio-circle"></span>
+          <span class="dest-radio-jp">古道</span>
+          <span class="dest-radio-body">
+            <span class="dest-radio-name">Anciens chemins</span>
+            <span class="dest-radio-desc">Randonnée sur les voies historiques</span>
+          </span>
+        </label>
+        <label class="dest-radio">
+          <input type="radio" name="theme" value="Voyage gastronomique — Sushi · Wagyu · Ramen">
+          <span class="dest-radio-circle"></span>
+          <span class="dest-radio-jp">食</span>
+          <span class="dest-radio-body">
+            <span class="dest-radio-name">Voyage gastronomique</span>
+            <span class="dest-radio-desc">Sushi · Wagyu · Ramen</span>
+          </span>
+        </label>
+        <label class="dest-radio">
+          <input type="radio" name="theme" value="Arts & Traditions — Nô · Sumo · Chadô · Zen">
+          <span class="dest-radio-circle"></span>
+          <span class="dest-radio-jp">文化</span>
+          <span class="dest-radio-body">
+            <span class="dest-radio-name">Arts &amp; Traditions</span>
+            <span class="dest-radio-desc">Nô · Sumo · Chadô · Zen</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="field-group" style="margin-top:1.5rem">
+      <label class="field-label">Budget</label>
+      <div class="budget-options">
+        <label class="budget-opt">
+          <input type="radio" name="budget-pref" value="sans contrainte">
+          <span class="budget-opt-circle"></span>
+          <span class="budget-opt-body">
+            <span class="budget-opt-label">Le budget n'est pas un critère</span>
+            <span class="budget-opt-jp">予算は気にしない</span>
+          </span>
+        </label>
+        <label class="budget-opt">
+          <input type="radio" name="budget-pref" value="200 EUR/jour" checked>
+          <span class="budget-opt-circle"></span>
+          <span class="budget-opt-body">
+            <span class="budget-opt-label">200 € par jour maximum</span>
+            <span class="budget-opt-jp">１日200ユーロ以下で</span>
+          </span>
+        </label>
+        <label class="budget-opt">
+          <input type="radio" name="budget-pref" value="économique">
+          <span class="budget-opt-circle"></span>
+          <span class="budget-opt-body">
+            <span class="budget-opt-label">Le moins cher possible</span>
+            <span class="budget-opt-jp">なるべく安くしたい</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="form-nav">
+      <button class="btn-prev" onclick="goStep(1)">← Retour</button>
+      <button class="btn-next" onclick="goStep(3)">Étape suivante →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="form-step" id="fs-3">
+    <div class="step-heading">
+      <div class="step-eyebrow">Étape 3 sur 3</div>
+      <h2>Recevoir <em>votre itinéraire</em></h2>
+      <p>Notre IA compose votre itinéraire personnalisé et vous l'envoie immédiatement.</p>
+    </div>
+    <div class="email-block">
+      <div class="email-block-title">Vos coordonnées</div>
+      <div class="email-block-sub">Votre itinéraire sera affiché ici et envoyé à votre adresse email. Vous pourrez le partager ou le compléter avec un concierge.</div>
+      <div class="field-row" style="margin-bottom:1.2rem">
+        <div class="field-group" style="margin:0">
+          <label class="field-label">Prénom <span class="req">*</span></label>
+          <input type="text" class="field-input" id="prenom" placeholder="Marie">
+        </div>
+        <div class="field-group" style="margin:0">
+          <label class="field-label">Nom</label>
+          <input type="text" class="field-input" id="nom" placeholder="Dubois">
+        </div>
+      </div>
+      <div class="field-group" style="margin:0">
+        <label class="field-label">Adresse email <span class="req">*</span></label>
+        <input type="email" class="field-input" id="email" placeholder="marie.dubois@email.com">
+      </div>
+    </div>
+    <div class="form-nav">
+      <button class="btn-prev" onclick="goStep(2)">← Retour</button>
+      <button class="btn-generate" onclick="generatePlan()">✦ Générer mon itinéraire →</button>
+    </div>
+    <p style="margin-top:1.2rem; font-family:'EB Garamond',serif; font-style:italic; font-size:0.88rem; color:#8a8580; line-height:1.7; text-align:center; max-width:480px; margin-left:auto; margin-right:auto;">
+      * Ce plan est généré une seule fois. Pour toute modification ou question, veuillez consulter notre concierge.
+    </p>
+  </div>
+
+</div><!-- /form-area -->
+
+<!-- ═══ RESULT ═══ -->
+<div class="result-area" id="resultArea">
+  <div class="loading-wrap" id="loadingWrap">
+    <div class="spinner"></div>
+    <p class="loading-text">Notre IA compose votre itinéraire sur mesure…</p>
+  </div>
+  <div id="planOutput" style="display:none">
+    <div class="result-header">
+      <div class="result-eyebrow">Votre itinéraire personnalisé · Proposition générée par IA</div>
+      <h2>Votre voyage au <em>Japon</em></h2>
+    </div>
+    <div id="emailSentNote" style="display:none; background:#e8f5e9; border-left:3px solid #4caf50; padding:.8rem 1.2rem; margin-bottom:1rem; font-family:'EB Garamond',serif; font-size:.9rem; color:#2e7d32;"></div>
+    <div class="email-sent" id="plan-key-block">
+      <div class="email-sent-icon">🔑</div>
+      <div class="email-sent-text">
+        <strong>Votre numéro de plan personnel :</strong>
+        <span id="planKeyDisplay" style="font-family:monospace;font-size:.85rem;font-weight:700;color:#0f0e0b;letter-spacing:.08em;background:#e8f0e0;padding:.15rem .4rem;border-radius:2px;"></span>
+        <br>Notez ce numéro — il vous permettra de retrouver votre plan avec notre concierge.
+      </div>
+    </div>
+    <div class="plan-card" id="planContent"></div>
+    <div class="result-actions">
+      <a href="concierge-payment.html" class="btn-concierge" id="btn-concierge-link">Affiner avec un concierge →</a>
+      <button class="btn-next" onclick="restartForm()" id="btn-restart" style="display:none">Créer un nouveau plan</button>
+    </div>
+    <p class="result-note">Cet itinéraire est une première suggestion générée par IA.<br>Pour un voyage parfaitement organisé, notre équipe de concierges est disponible pour affiner chaque détail.</p>
+  </div>
+</div>
+
+<!-- ═══ BOTTOM CTA ═══ -->
+<section class="bottom-cta">
+  <div class="bc-left">
+    <div class="bc-eyebrow"><span class="bc-line"></span>Prêt à aller plus loin ?</div>
+    <h2 class="bc-title">Un concierge dédié<br><em>pour votre voyage</em></h2>
+    <p class="bc-sub">Réservations, guide privé, accès exclusifs — notre équipe prend tout en charge.</p>
+  </div>
+  <a href="concierge-payment.html" class="bc-btn">Découvrir le Concierge →</a>
+</section>
+
+<footer class="mini-footer">
+  <a href="vogue-japon-toppage.html" class="mf-logo"><em>Votre</em> Japon sur Mesure</a>
+  <div class="mf-links">
+    <a href="vogue-japon-toppage.html">Accueil</a>
+    <a href="four-seasons-journey.html">4 Saisons</a>
+    <a href="taiken-japon.html">Expériences</a>
+    <a href="concierge-payment.html">Concierge</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <span class="mf-copy">© 2025 Votre Japon sur Mesure</span>
+</footer>
+
+<script>
+var curStep = 1;
+
+function goStep(n) {
+  document.getElementById('fs-' + curStep).classList.remove('active');
+  document.getElementById('si-' + curStep).classList.remove('active');
+  if (n > curStep) document.getElementById('si-' + curStep).classList.add('done');
+  curStep = n;
+  document.getElementById('fs-' + curStep).classList.add('active');
+  document.getElementById('si-' + curStep).classList.add('active');
+  document.querySelector('.steps-bar').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function toggleTheme(el) { el.classList.toggle('selected'); }
+function toggleArea(el)  { el.classList.toggle('selected'); }
+
+function updateBudget(v) {
+  var n = parseInt(v);
+  document.getElementById('budget-display').innerHTML =
+    (n >= 10000 ? '€ 10 000 +' : '€ ' + n.toLocaleString('fr-FR')) + ' <span>par personne</span>';
+}
+
+function collectData() {
+  var themeEl    = document.querySelector('input[name="theme"]:checked');
+  var budgetPrefEl = document.querySelector('input[name="budget-pref"]:checked');
+  return {
+    depDate:    document.getElementById('dep-date').value || 'non précisé',
+    duration:   document.getElementById('duration').value || '10 jours',
+    adults:     document.getElementById('adults').value,
+    children:   document.getElementById('children').value,
+    age:        document.getElementById('age').value,
+    experience: document.getElementById('experience').value,
+    themes:     themeEl ? themeEl.value : 'Découverte générale',
+    budgetPref: budgetPrefEl ? budgetPrefEl.value : '',
+    prenom:     document.getElementById('prenom').value || 'Voyageur',
+    email:      document.getElementById('email').value
+  };
+}
+
+async function generatePlan() {
+  var d = collectData();
+  if (!d.email) { alert('Veuillez entrer votre adresse email.'); return; }
+
+  document.getElementById('formArea').style.display = 'none';
+  var ra = document.getElementById('resultArea');
+  ra.classList.add('active');
+  document.getElementById('loadingWrap').style.display = 'block';
+  document.getElementById('planOutput').style.display = 'none';
+  ra.scrollIntoView({ behavior:'smooth', block:'start' });
+
+  var prompt = [
+    "Tu es un expert en voyages au Japon pour une clientèle française haut de gamme.",
+    "Crée un itinéraire détaillé et personnalisé en français avec ces informations :",
+    "- Voyageur : " + d.prenom,
+    "- Départ : " + d.depDate,
+    "- Durée : " + d.duration,
+    "- Groupe : " + d.adults + ", " + d.children + ", tranche d'âge " + d.age,
+    "- Expérience : " + d.experience,
+    "- Thèmes : " + d.themes,
+    "- Budget : " + (d.budgetPref || 'non précisé'),
+    "",
+    "Structure ta réponse ainsi :",
+    "1. Un titre poétique pour ce voyage",
+    "2. Introduction (2-3 phrases)",
+    "3. Itinéraire jour par jour",
+    "4. 3 conseils pratiques essentiels",
+    "5. Un mot d'encouragement final",
+    "",
+    "Style élégant et inspirant. Maximum 800 mots."
+  ].join('\n');
+
+  try {
+    var res = await fetch("https://wild-moon-ff72japan-api-proxy.sato-9c3.workers.dev", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 2200,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    var data = await res.json();
+    var text = (data.content && data.content[0]) ? data.content[0].text : "Une erreur est survenue.";
+
+    // Format markdown to HTML
+    text = text
+      .replace(/^### (.+)$/gm, '<h4>$1</h4>')
+      .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^# (.+)$/gm, '<h2>$1</h2>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/^- (.+)$/gm, '<li>$1</li>')
+      .replace(/(<li>[^<]*<\/li>\n?)+/g, '<ul>$&</ul>')
+      .replace(/\n\n+/g, '\n')
+      .replace(/\n(?!<)/g, '<br>');
+
+    document.getElementById('loadingWrap').style.display = 'none';
+    document.getElementById('planOutput').style.display = 'block';
+    document.getElementById('planContent').innerHTML = text;
+    // 画像を自動挿入
+    insertPlanImages(document.getElementById('planContent'));
+
+    // ── Generate unique plan key ──
+    var now = new Date();
+    var planKey = 'VJM-' + now.getFullYear() + '-' + String(Math.floor(10000 + Math.random() * 90000));
+    document.getElementById('planKeyDisplay').textContent = planKey;
+    document.getElementById('btn-concierge-link').href = 'concierge-payment.html?plan=' + encodeURIComponent(planKey);
+
+    // ── Resendでメール送信 ──
+    if (d.email) {
+      fetch('https://wild-moon-ff72japan-api-proxy.sato-9c3.workers.dev/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: d.email,
+          prenom: d.prenom,
+          planKey: planKey,
+          planText: text,
+        })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(res) {
+        if (res.ok) {
+          // メール送信成功の通知を表示
+          var note = document.getElementById('emailSentNote');
+          if (note) {
+            note.style.display = 'block';
+            note.textContent = '✉ Itinéraire envoyé à ' + d.email;
+          }
+        }
+      })
+      .catch(function(e) { console.warn('Email send failed:', e); });
+    }
+
+    // ── Save to persistent storage ──
+    var planRecord = {
+      key: planKey,
+      ts: Date.now(),
+      client: {
+        prenom: d.prenom,
+        email: d.email,
+        depDate: d.depDate,
+        duration: d.duration,
+        adults: d.adults,
+        children: d.children,
+        age: d.age,
+        experience: d.experience,
+        themes: d.themes,
+        budgetPref: d.budgetPref
+      },
+      planText: text
+    };
+    try {
+      await window.storage.set('vjm_plan_' + planKey, JSON.stringify(planRecord), true);
+      console.log('Plan saved:', planKey);
+    } catch(e) { console.warn('Storage save failed:', e); }
+
+    // ── Lock: disable generate button, show restart only ──
+    var genBtn = document.querySelector('.btn-generate');
+    if (genBtn) { genBtn.disabled = true; genBtn.textContent = '✓ Plan généré'; genBtn.style.background='#6a8a5a'; }
+
+  } catch(e) {
+    document.getElementById('loadingWrap').style.display = 'none';
+    document.getElementById('planOutput').style.display = 'block';
+    document.getElementById('planContent').innerHTML = '<p>Une erreur est survenue. Veuillez réessayer.</p>';
+  }
+}
+
+function restartForm() {
+  // Re-enable generate button for new plan
+  var genBtn = document.querySelector('.btn-generate');
+  if (genBtn) { genBtn.disabled = false; genBtn.textContent = '✦ Générer mon itinéraire →'; genBtn.style.background=''; }
+  document.getElementById('formArea').style.display = 'block';
+  document.getElementById('resultArea').classList.remove('active');
+  curStep = 1;
+  for (var i=1; i<=3; i++) {
+    document.getElementById('fs-'+i).classList.remove('active');
+    document.getElementById('si-'+i).classList.remove('active','done');
+  }
+  document.getElementById('fs-1').classList.add('active');
+  document.getElementById('si-1').classList.add('active');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+</script>
+
+<script>
+function setHeroHeight() {
+  var nav  = document.getElementById('siteNav');
+  var tabs = document.querySelector('.steps-bar');
+  var hero = document.getElementById('hero');
+  if (nav && tabs && hero) {
+    hero.style.height = (window.innerHeight - nav.offsetHeight - tabs.offsetHeight) + 'px';
+  }
+}
+window.addEventListener('load', setHeroHeight);
+window.addEventListener('resize', setHeroHeight);
+
+// ── Plan Image Insertion ──
+var PLAN_IMGS = {"tokyo": "img/embedded/emb-1e177124e4.jpg", "kyoto": "img/embedded/emb-260f75fde5.jpg", "hakone": "img/embedded/emb-b1d01795bb.jpg", "osaka": "img/embedded/emb-90e8872268.jpg", "nara": "img/embedded/emb-5e0f08bd1b.jpg", "hiroshima": "img/embedded/emb-4f378e3f3d.jpg", "nikko": "img/embedded/emb-a03afce2aa.jpg", "kanazawa": "img/embedded/emb-d7a3e4a974.jpg", "hokkaido": "img/embedded/emb-cecc576ea2.jpg", "fuji": "img/embedded/emb-bf9276a4a4.jpg", "default": "img/embedded/emb-0b3a4ec2cb.jpg"};
+function insertPlanImages(container) {
+  var areaMap = {
+    'tokyo': PLAN_IMGS['tokyo'], 'asakusa': PLAN_IMGS['tokyo'],
+    'shinjuku': PLAN_IMGS['tokyo'], 'shibuya': PLAN_IMGS['tokyo'], 'ginza': PLAN_IMGS['tokyo'],
+    'kyoto': PLAN_IMGS['kyoto'], 'gion': PLAN_IMGS['kyoto'], 'arashiyama': PLAN_IMGS['kyoto'],
+    'hakone': PLAN_IMGS['hakone'], 'onsen': PLAN_IMGS['hakone'], 'ryokan': PLAN_IMGS['hakone'],
+    'osaka': PLAN_IMGS['osaka'], 'nishiki': PLAN_IMGS['osaka'],
+    'nara': PLAN_IMGS['nara'],
+    'hiroshima': PLAN_IMGS['hiroshima'], 'miyajima': PLAN_IMGS['hiroshima'],
+    'kanazawa': PLAN_IMGS['kanazawa'],
+    'nikko': PLAN_IMGS['nikko'],
+    'hokkaido': PLAN_IMGS['hokkaido'], 'sapporo': PLAN_IMGS['hokkaido'],
+    'fuji': PLAN_IMGS['fuji'],
+    'edo': PLAN_IMGS['tokyo'],
+    'nippone': PLAN_IMGS['default'], 'japon': PLAN_IMGS['default'],
+  };
+
+  function getImgForText(text) {
+    var t = text.toLowerCase();
+    for (var key in areaMap) {
+      if (t.indexOf(key) !== -1) return { src: areaMap[key], label: key.charAt(0).toUpperCase() + key.slice(1) };
+    }
+    return null;
+  }
+
+  var html = container.innerHTML;
+  var usedKeys = {};
+
+  // h2/h3/h4 タグに画像を挿入
+  html = html.replace(/(<h[2-4][^>]*>)([\s\S]*?)(<\/h[2-4]>)/gi, function(match, open, content, close) {
+    var plainText = content.replace(/<[^>]+>/g, '');
+    var result = getImgForText(plainText);
+    if (result && !usedKeys[result.label]) {
+      usedKeys[result.label] = true;
+      return match + '<img src="' + result.src + '" class="plan-img-strip" alt="' + result.label + '"><span class="plan-img-caption">✦ ' + result.label + '</span>';
+    }
+    return match;
+  });
+
+  // strongタグ（日程見出し）にも画像を挿入 例: <strong>Jours 1-2 : Tokyo</strong>
+  html = html.replace(/(<strong[^>]*>)([\s\S]*?)(<\/strong>)/gi, function(match, open, content, close) {
+    var plainText = content.replace(/<[^>]+>/g, '');
+    if (!plainText.match(/jour|day|\d/i)) return match; // 日程テキストのみ
+    var result = getImgForText(plainText);
+    if (result && !usedKeys[result.label]) {
+      usedKeys[result.label] = true;
+      return match + '<br><img src="' + result.src + '" class="plan-img-strip" alt="' + result.label + '"><span class="plan-img-caption">✦ ' + result.label + '</span>';
+    }
+    return match;
+  });
+
+  container.innerHTML = html;
+}
+</script>
+</body>
+</html>

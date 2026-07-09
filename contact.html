@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Votre Japon sur Mesure</title>
+<link rel="canonical" href="https://japon.progic.jp/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Votre Japon sur Mesure">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Contact — Votre Japon sur Mesure">
+<meta property="og:description" content="Une question sur votre voyage au Japon ? Écrivez-nous, nous vous répondons personnellement sous 24 à 48 heures.">
+<meta property="og:url" content="https://japon.progic.jp/contact.html">
+<meta property="og:image" content="https://japon.progic.jp/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact — Votre Japon sur Mesure">
+<meta name="twitter:description" content="Une question sur votre voyage au Japon ? Écrivez-nous, réponse sous 24 à 48 heures.">
+<meta name="twitter:image" content="https://japon.progic.jp/img/og-image.jpg">
+<meta name="description" content="Une question sur votre voyage au Japon ? Écrivez-nous, nous vous répondons personnellement sous 24 à 48 heures.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f9f7f3; --noir:#0c0c0c; --gold:#a8834a; --gold-lt:#c9a96e;
+  --charcoal:#2a2a2a; --ash:#7a7a7a; --sakura:#c4848c; --ink-blue:#1a2640;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--noir);font-family:'Jost',sans-serif;overflow-x:hidden;}
+
+.nav-spacer{height:58px;}
+
+/* ── HERO ── */
+.contact-hero{
+  max-width:880px;margin:0 auto;padding:5rem 8% 2.5rem;text-align:center;
+}
+.contact-hero .eyebrow{
+  font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.6rem;
+}
+.contact-hero h1{
+  font-family:'EB Garamond',Georgia,serif;font-weight:400;
+  font-size:clamp(2.4rem,6vw,3.8rem);line-height:1.08;color:var(--noir);
+  margin-bottom:1.6rem;
+}
+.contact-hero h1 em{font-style:italic;color:var(--gold);}
+.contact-hero .lede{
+  font-size:.92rem;line-height:1.9;color:var(--charcoal);max-width:560px;
+  margin:0 auto;font-weight:300;
+}
+.contact-hero .lede-jp{
+  display:block;margin-top:.8rem;font-family:'Noto Serif JP',serif;
+  font-size:.78rem;color:var(--ash);letter-spacing:.04em;
+}
+
+/* ── FORM ── */
+.contact-wrap{max-width:620px;margin:0 auto;padding:1rem 8% 6rem;}
+.contact-form{display:flex;flex-direction:column;gap:1.7rem;}
+.field-label{
+  display:block;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ash);margin-bottom:.6rem;
+}
+.field-label .req{color:var(--gold);margin-left:.2em;}
+.field-input,.field-textarea{
+  width:100%;background:#fff;border:1px solid rgba(0,0,0,.12);
+  padding:.95rem 1.1rem;font-family:'Jost',sans-serif;font-size:.9rem;color:var(--noir);
+  transition:border-color .2s,box-shadow .2s;
+}
+.field-input:focus,.field-textarea:focus{
+  outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(168,131,74,.1);
+}
+.field-textarea{resize:vertical;min-height:150px;line-height:1.7;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;}
+.field-hint{font-size:.62rem;color:var(--ash);margin-top:.45rem;letter-spacing:.02em;}
+
+.btn-send{
+  align-self:flex-start;margin-top:.4rem;
+  padding:1rem 2.6rem;background:var(--noir);border:none;cursor:pointer;
+  font-family:'Jost',sans-serif;font-size:.6rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:#fff;
+  transition:background .3s,transform .2s;
+}
+.btn-send:hover{background:var(--gold);transform:translateY(-2px);}
+.btn-send:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+/* ── STATUS ── */
+.contact-status{margin-top:2rem;display:none;}
+.contact-status.show{display:block;animation:fadeUp .4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.status-loading{display:flex;align-items:center;gap:.9rem;color:var(--charcoal);font-size:.85rem;}
+.spinner{
+  width:20px;height:20px;border:2px solid rgba(168,131,74,.25);
+  border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status-success{
+  background:#fff;border:1px solid rgba(168,131,74,.3);border-left:3px solid var(--gold);
+  padding:1.8rem 2rem;
+}
+.status-success h3{
+  font-family:'EB Garamond',serif;font-weight:400;font-size:1.5rem;color:var(--noir);
+  margin-bottom:.7rem;
+}
+.status-success p{font-size:.85rem;line-height:1.8;color:var(--charcoal);font-weight:300;}
+.status-error{
+  background:#fdf6f6;border:1px solid rgba(196,132,140,.4);border-left:3px solid var(--sakura);
+  padding:1.5rem 1.8rem;font-size:.82rem;line-height:1.7;color:var(--charcoal);
+}
+.status-error a{color:var(--gold);}
+
+/* ── REASSURANCE FOOTER ── */
+.contact-note{
+  max-width:620px;margin:0 auto;padding:0 8% 5rem;text-align:center;
+  font-size:.72rem;letter-spacing:.04em;color:var(--ash);line-height:1.9;
+}
+.contact-note a{color:var(--gold);text-decoration:none;}
+.contact-note a:hover{text-decoration:underline;}
+
+@media(max-width:600px){
+  .field-row{grid-template-columns:1fr;}
+  .contact-hero{padding-top:3.5rem;}
+}
+</style>
+</head>
+<body>
+<div class="nav-spacer"></div>
+
+<section class="contact-hero">
+  <p class="eyebrow">Contact · お問い合わせ</p>
+  <h1>Une question ?<br><em>Écrivez-nous.</em></h1>
+  <p class="lede">
+    Notre équipe vous répond personnellement sous 24 à 48 heures.
+    Écrivez en français, en toute simplicité — nous vous répondrons dans votre langue.
+    <span class="lede-jp">どんな小さなご質問でも、お気軽にどうぞ。</span>
+  </p>
+</section>
+
+<section class="contact-wrap">
+  <form class="contact-form" id="contactForm" autocomplete="on">
+    <div class="field-row">
+      <div>
+        <label class="field-label" for="cf-prenom">Prénom <span class="req">*</span></label>
+        <input class="field-input" type="text" id="cf-prenom" name="prenom" required>
+      </div>
+      <div>
+        <label class="field-label" for="cf-nom">Nom</label>
+        <input class="field-input" type="text" id="cf-nom" name="nom">
+      </div>
+    </div>
+
+    <div>
+      <label class="field-label" for="cf-email">Email <span class="req">*</span></label>
+      <input class="field-input" type="email" id="cf-email" name="email" required>
+      <p class="field-hint">Nous y répondrons directement.</p>
+    </div>
+
+    <div>
+      <label class="field-label" for="cf-key">Clé de voyage (facultatif)</label>
+      <input class="field-input" type="text" id="cf-key" name="planKey" placeholder="VJM-2025-XXXXX">
+      <p class="field-hint">Si vous avez déjà reçu un itinéraire, indiquez sa référence.</p>
+    </div>
+
+    <div>
+      <label class="field-label" for="cf-message">Votre message <span class="req">*</span></label>
+      <textarea class="field-textarea" id="cf-message" name="message" required
+        placeholder="Posez-nous votre question sur votre voyage au Japon…"></textarea>
+    </div>
+
+    <button type="submit" class="btn-send" id="cfSubmit">Envoyer le message →</button>
+  </form>
+
+  <div class="contact-status" id="contactStatus"></div>
+</section>
+
+<p class="contact-note">
+  Vous préférez l'email&nbsp;? Écrivez-nous à <a href="mailto:info@progic.jp">info@progic.jp</a><br>
+  Votre Japon sur Mesure · あなただけの日本旅行
+</p>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   CONTACT FORM — bilingue (FR → JP automatique)
+   - Traduit le message en japonais via le proxy Claude
+   - Envoie à info@progic.jp avec le japonais ET le français
+   ═══════════════════════════════════════════════════ */
+(function(){
+  var WORKER = "https://wild-moon-ff72japan-api-proxy.sato-9c3.workers.dev";
+  var DEST_LIST    = ["sato@progic.jp", "info@progic.jp"]; // les deux boîtes reçoivent
+  var DEST_DISPLAY = "sato@progic.jp";
+
+  var form   = document.getElementById('contactForm');
+  var statusEl = document.getElementById('contactStatus');
+  var btn    = document.getElementById('cfSubmit');
+
+  function esc(s){
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function showLoading(){
+    statusEl.className = 'contact-status show';
+    statusEl.innerHTML =
+      '<div class="status-loading"><div class="spinner"></div>'+
+      '<span>Envoi de votre message en cours…</span></div>';
+  }
+  function showSuccess(){
+    statusEl.className = 'contact-status show';
+    statusEl.innerHTML =
+      '<div class="status-success">'+
+      '<h3>Merci, votre message est parti&nbsp;✦</h3>'+
+      '<p>Nous vous répondrons personnellement sous 24 à 48 heures, '+
+      'à l\'adresse que vous avez indiquée. À très bientôt&nbsp;!</p></div>';
+  }
+  function showError(){
+    statusEl.className = 'contact-status show';
+    statusEl.innerHTML =
+      '<div class="status-error">Une erreur est survenue lors de l\'envoi. '+
+      'Merci de nous écrire directement à <a href="mailto:'+DEST_DISPLAY+'">'+DEST_DISPLAY+'</a>.</div>';
+  }
+
+  /* Traduit le texte FR → JP via le proxy Claude. Renvoie '' si échec. */
+  function translateToJP(text){
+    return fetch(WORKER, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-6",
+        max_tokens:700,
+        messages:[{role:"user", content:
+          "Traduis le message client suivant du français vers un japonais naturel et poli (敬語). "+
+          "Réponds UNIQUEMENT avec la traduction japonaise, sans aucun commentaire ni guillemets.\n\n"+text
+        }]
+      })
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      return (d && d.content && d.content[0]) ? d.content[0].text.trim() : '';
+    })
+    .catch(function(){return '';});
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var prenom  = document.getElementById('cf-prenom').value.trim();
+    var nom     = document.getElementById('cf-nom').value.trim();
+    var email   = document.getElementById('cf-email').value.trim();
+    var planKey = document.getElementById('cf-key').value.trim();
+    var message = document.getElementById('cf-message').value.trim();
+
+    if(!prenom || !email || !message){ return; }
+
+    btn.disabled = true;
+    showLoading();
+
+    translateToJP(message).then(function(jp){
+      var fullName = (prenom + ' ' + nom).trim();
+      var hasJP = jp && jp.length > 0;
+
+      /* Corps de l'email envoyé à Sato — japonais d'abord, original ensuite */
+      var body =
+        '<div style="font-family:sans-serif;line-height:1.8;color:#222;">'+
+        '<p style="font-size:13px;color:#a8834a;letter-spacing:.1em;margin:0 0 12px;">'+
+          '📨 お問い合わせ（サイト経由）</p>'+
+        '<table style="border-collapse:collapse;font-size:14px;margin-bottom:18px;">'+
+          '<tr><td style="padding:3px 14px 3px 0;color:#888;">お名前</td><td>'+esc(fullName)+'</td></tr>'+
+          '<tr><td style="padding:3px 14px 3px 0;color:#888;">返信先メール</td><td><a href="mailto:'+esc(email)+'">'+esc(email)+'</a></td></tr>'+
+          (planKey ? '<tr><td style="padding:3px 14px 3px 0;color:#888;">旅行キー</td><td>'+esc(planKey)+'</td></tr>' : '')+
+        '</table>'+
+        (hasJP
+          ? '<p style="font-size:12px;color:#888;margin:0 0 4px;">— 日本語訳 —</p>'+
+            '<p style="font-size:15px;background:#f7f3ec;padding:12px 14px;border-left:3px solid #a8834a;margin:0 0 18px;white-space:pre-wrap;">'+esc(jp)+'</p>'
+          : '<p style="font-size:12px;color:#c4848c;margin:0 0 8px;">（自動翻訳に失敗しました。原文をご確認ください）</p>')+
+        '<p style="font-size:12px;color:#888;margin:0 0 4px;">— 原文（français）—</p>'+
+        '<p style="font-size:14px;color:#555;white-space:pre-wrap;margin:0;">'+esc(message)+'</p>'+
+        '<hr style="border:none;border-top:1px solid #eee;margin:20px 0 8px;">'+
+        '<p style="font-size:11px;color:#aaa;margin:0;">返信は「アキ」に依頼すると、日本語→フランス語に翻訳して下書きを作成できます。</p>'+
+        '</div>';
+
+      return fetch(WORKER + '/email', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          to: DEST_LIST,        // les deux boîtes : sato@ + info@
+          replyTo: email,       // répondre directement au client
+          prenom: 'Équipe Votre Japon',
+          planKey: 'CONTACT-' + Date.now(),
+          planText: body
+        })
+      }).then(function(r){return r.json();});
+    })
+    .then(function(res){
+      if(res && res.ok){        // statut réel renvoyé par le Worker corrigé
+        showSuccess();
+      }else{
+        showError(); btn.disabled = false;
+      }
+    })
+    .catch(function(){
+      showError(); btn.disabled = false;
+    });
+  });
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   SHARED NAV — Votre Japon sur Mesure
+   ═══════════════════════════════════════════════════ */
+(function () {
+  const style = document.createElement('style');
+  style.textContent = `
+    .snav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;
+      justify-content:space-between;padding:0 3rem;height:58px;background:rgba(248,246,241,0.96);
+      backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.07);font-family:'Jost',sans-serif;}
+    .snav-logo{font-family:'EB Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;
+      color:var(--noir,#0c0c0c);text-decoration:none;white-space:nowrap;}
+    .snav-logo em{font-style:italic;color:var(--gold,#a8834a);}
+    .snav-links{display:flex;gap:0;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}
+    .snav-links a{display:block;padding:0 1rem;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--ash,#6e6e6e);text-decoration:none;transition:color 0.2s;line-height:58px;position:relative;white-space:nowrap;}
+    .snav-links a::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;
+      background:var(--gold,#a8834a);transform:scaleX(0);transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);transform-origin:left;}
+    .snav-links a:hover,.snav-links a.active{color:var(--gold,#a8834a);}
+    .snav-links a:hover::after,.snav-links a.active::after{transform:scaleX(1);}
+    .snav-right{display:flex;align-items:center;gap:1.4rem;}
+    .snav-lang{display:flex;gap:0.3rem;align-items:center;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;}
+    .snav-lang a{color:var(--silver,#c0bbb1);text-decoration:none;transition:color 0.2s;padding:0.2rem 0.3rem;}
+    .snav-lang a.active,.snav-lang a:hover{color:var(--gold,#a8834a);}
+    .snav-lang-sep{color:rgba(0,0,0,0.15);font-size:0.65rem;}
+    .snav-cta{padding:0.55rem 1.4rem;background:var(--gold,#a8834a);color:#fff;border:none;font-family:'Jost',sans-serif;
+      font-size:0.6rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;
+      transition:background 0.2s,transform 0.2s;display:inline-block;}
+    .snav-cta:hover{background:#c9a96e;transform:translateY(-1px);}
+    .snav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+    .snav-burger span{width:22px;height:1.5px;background:var(--ash,#6e6e6e);display:block;transition:all 0.3s;}
+    .snav-mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;background:rgba(248,246,241,0.98);
+      backdrop-filter:blur(20px);padding:1.5rem 2rem;z-index:499;border-bottom:1px solid rgba(0,0,0,0.08);flex-direction:column;gap:0;}
+    .snav-mobile-menu.open{display:flex;}
+    .snav-mobile-menu a{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash,#6e6e6e);
+      text-decoration:none;padding:1rem 0;border-bottom:1px solid rgba(0,0,0,0.06);transition:color 0.2s;}
+    .snav-mobile-menu a:last-child{border-bottom:none;}
+    .snav-mobile-menu a:hover,.snav-mobile-menu a.active{color:var(--gold,#a8834a);}
+    @media(max-width:900px){.snav-links{display:none;}.snav-burger{display:flex;}.snav-lang{display:none;}}
+    @media(max-width:600px){.snav{padding:0 1.5rem;}.snav-cta{display:none;}}
+  `;
+  document.head.appendChild(style);
+
+  const nav = document.createElement('header');
+  nav.className = 'snav';
+  nav.id = 'siteNav';
+  nav.innerHTML = `
+    <a href="vogue-japon-toppage.html" class="snav-logo"><em>Votre</em> Japon sur Mesure</a>
+    <ul class="snav-links">
+      <li><a href="four-seasons-journey.html">4 Saisons</a></li>
+      <li><a href="planification-form.html">Planifier</a></li>
+      <li><a href="concierge-payment.html">Concierge</a></li>
+      <li><a href="actualites-japon.html">Actualités</a></li>
+      <li><a href="taiken-japon.html">Expériences</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="snav-right">
+      <div class="snav-lang">
+        <a href="#" class="active">FR</a>
+        <span class="snav-lang-sep">|</span>
+        <a href="#">JP</a>
+      </div>
+      <a href="planification-form.html" class="snav-cta">Planifier →</a>
+      <button class="snav-burger" id="snavBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  `;
+
+  const mobileMenu = document.createElement('div');
+  mobileMenu.className = 'snav-mobile-menu';
+  mobileMenu.id = 'snavMobile';
+  mobileMenu.innerHTML = `
+    <a href="vogue-japon-toppage.html">🏠 Accueil</a>
+    <a href="planification-form.html">✦ Planifier mon voyage (gratuit)</a>
+    <a href="concierge-payment.html">⊛ Concierge & Tarifs</a>
+    <a href="taiken-japon.html">🍵 Taiken · Expériences</a>
+    <a href="actualites-japon.html">📡 Actualités</a>
+    <a href="contact.html" class="active">✉ Contact</a>
+  `;
+
+  document.body.insertBefore(mobileMenu, document.body.firstChild);
+  document.body.insertBefore(nav, mobileMenu);
+
+  document.getElementById('snavBurger').addEventListener('click', function () {
+    document.getElementById('snavMobile').classList.toggle('open');
+  });
+})();
+</script>
+</body>
+</html>
