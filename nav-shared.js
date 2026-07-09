@@ -15,6 +15,11 @@
   const isActu    = path === 'actualites-japon.html';
   const isCulture = path === 'culture-japon.html';
   const isExp     = path === 'ma-experience-japon.html';
+  const isContact = path === 'contact.html';
+
+  /* ── FR version URL (language toggle) ── */
+  const frFile = isTop ? 'vogue-japon-toppage.html' : path;
+  const frHref = 'https://japon.progic.jp/' + frFile;
 
   /* ── Inject shared CSS variables & reset nav colours ── */
   const style = document.createElement('style');
@@ -27,7 +32,7 @@
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(0,0,0,0.07);
       transition: background 0.4s, box-shadow 0.4s;
-      font-family: 'Jost', sans-serif;
+      font-family: 'Montserrat', sans-serif;
     }
     .snav.dark-mode {
       background: rgba(13,22,38,0.96);
@@ -83,7 +88,7 @@
     .snav-cta {
       padding: 0.55rem 1.4rem;
       background: var(--gold, #a8834a); color: #fff; border: none;
-      font-family: 'Jost', sans-serif; font-size: 0.6rem;
+      font-family: 'Montserrat', sans-serif; font-size: 0.6rem;
       font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
       cursor: pointer; text-decoration: none;
       transition: background 0.2s, transform 0.2s;
@@ -137,24 +142,26 @@
   nav.className = 'snav' + (isTop ? ' dark-mode' : '');
   nav.id = 'siteNav';
   nav.innerHTML = `
-    <a href="vogue-japon-toppage.html" class="snav-logo"><em>Votre</em> Japon sur Mesure</a>
+    <a href="index.html" class="snav-logo"><em>Votre</em> Japon sur Mesure</a>
 
     <ul class="snav-links">
-      <li><a href="four-seasons-journey.html" ${isFour?'class="active"':''}>4 Saisons</a></li>
-      <li><a href="planification-form.html" ${isPlan?'class="active"':''}>Planifier</a></li>
-      <li><a href="concierge-payment.html" ${isCon?'class="active"':''}>Concierge</a></li>
-      <li><a href="actualites-japon.html" ${isActu?'class="active"':''}>Actualités</a></li>
-      <li><a href="taiken-japon.html" ${isTaiken?'class="active"':''}>Expériences</a></li>
-      <li><a href="ma-experience-japon.html" ${isExp?'class="active"':''}>Mon Voyage</a></li>
+      <!-- <li><a href="four-seasons-journey.html" ${isFour?'class="active"':''}>4 Saisons</a></li> -->
+      <li><a href="index.html" ${isTop?'class="active"':''}>Главная</a></li>
+      <li><a href="planification-form.html" ${isPlan?'class="active"':''}>Планирование</a></li>
+      <li><a href="concierge-payment.html" ${isCon?'class="active"':''}>Консьерж</a></li>
+      <!-- <li><a href="actualites-japon.html" ${isActu?'class="active"':''}>Actualités</a></li> -->
+      <!-- <li><a href="taiken-japon.html" ${isTaiken?'class="active"':''}>Expériences</a></li> -->
+      <!-- <li><a href="ma-experience-japon.html" ${isExp?'class="active"':''}>Mon Voyage</a></li> -->
+      <li><a href="contact.html" ${isContact?'class="active"':''}>Контакты</a></li>
     </ul>
 
     <div class="snav-right">
       <div class="snav-lang">
-        <a href="#" class="active">FR</a>
+        <a href="#" class="active">RU</a>
         <span class="snav-lang-sep">|</span>
-        <a href="#">JP</a>
+        <a href="${frHref}" hreflang="fr" lang="fr">FR</a>
       </div>
-      <a href="planification-form.html" class="snav-cta">Planifier →</a>
+      <a href="planification-form.html" class="snav-cta">Спланировать поездку →</a>
       <button class="snav-burger" id="snavBurger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -166,13 +173,14 @@
   mobileMenu.className = 'snav-mobile-menu';
   mobileMenu.id = 'snavMobile';
   mobileMenu.innerHTML = `
-    <a href="vogue-japon-toppage.html" ${isTop?'class="active"':''}>🏠 Accueil</a>
-    <a href="four-seasons-journey.html" ${isFour?'class="active"':''}>🌸 4 Saisons</a>
-    <a href="planification-form.html" ${isPlan?'class="active"':''}>✦ Planifier mon voyage</a>
-    <a href="concierge-payment.html" ${isCon?'class="active"':''}>⊛ Concierge & Tarifs</a>
-    <a href="actualites-japon.html" ${isActu?'class="active"':''}>📰 Actualités Japon</a>
-    <a href="taiken-japon.html" ${isTaiken?'class="active"':''}>🍵 Expériences</a>
-    <a href="ma-experience-japon.html" ${isExp?'class="active"':''}>📸 Mon Voyage</a>
+    <a href="index.html" ${isTop?'class="active"':''}>🏠 Главная</a>
+    <!-- <a href="four-seasons-journey.html" ${isFour?'class="active"':''}>🌸 4 Saisons</a> -->
+    <a href="planification-form.html" ${isPlan?'class="active"':''}>✦ Спланировать поездку</a>
+    <a href="concierge-payment.html" ${isCon?'class="active"':''}>⊛ Консьерж</a>
+    <!-- <a href="actualites-japon.html" ${isActu?'class="active"':''}>📰 Actualités Japon</a> -->
+    <!-- <a href="taiken-japon.html" ${isTaiken?'class="active"':''}>🍵 Expériences</a> -->
+    <!-- <a href="ma-experience-japon.html" ${isExp?'class="active"':''}>📸 Mon Voyage</a> -->
+    <a href="contact.html" ${isContact?'class="active"':''}>✉ Контакты</a>
     <a href="mailto:info@progic.jp">✉ info@progic.jp</a>
   `;
 

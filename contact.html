@@ -19,7 +19,7 @@
 <meta name="description" content="Une question sur votre voyage au Japon ? Écrivez-nous, nous vous répondons personnellement sous 24 à 48 heures.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&family=Montserrat:wght@400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#f9f7f3; --noir:#0c0c0c; --gold:#a8834a; --gold-lt:#c9a96e;
@@ -303,92 +303,6 @@ body{background:var(--paper);color:var(--noir);font-family:'Jost',sans-serif;ove
 })();
 </script>
 
-<script>
-/* ═══════════════════════════════════════════════════
-   SHARED NAV — Votre Japon sur Mesure
-   ═══════════════════════════════════════════════════ */
-(function () {
-  const style = document.createElement('style');
-  style.textContent = `
-    .snav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;
-      justify-content:space-between;padding:0 3rem;height:58px;background:rgba(248,246,241,0.96);
-      backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.07);font-family:'Jost',sans-serif;}
-    .snav-logo{font-family:'EB Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;
-      color:var(--noir,#0c0c0c);text-decoration:none;white-space:nowrap;}
-    .snav-logo em{font-style:italic;color:var(--gold,#a8834a);}
-    .snav-links{display:flex;gap:0;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}
-    .snav-links a{display:block;padding:0 1rem;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;
-      color:var(--ash,#6e6e6e);text-decoration:none;transition:color 0.2s;line-height:58px;position:relative;white-space:nowrap;}
-    .snav-links a::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;
-      background:var(--gold,#a8834a);transform:scaleX(0);transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);transform-origin:left;}
-    .snav-links a:hover,.snav-links a.active{color:var(--gold,#a8834a);}
-    .snav-links a:hover::after,.snav-links a.active::after{transform:scaleX(1);}
-    .snav-right{display:flex;align-items:center;gap:1.4rem;}
-    .snav-lang{display:flex;gap:0.3rem;align-items:center;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;}
-    .snav-lang a{color:var(--silver,#c0bbb1);text-decoration:none;transition:color 0.2s;padding:0.2rem 0.3rem;}
-    .snav-lang a.active,.snav-lang a:hover{color:var(--gold,#a8834a);}
-    .snav-lang-sep{color:rgba(0,0,0,0.15);font-size:0.65rem;}
-    .snav-cta{padding:0.55rem 1.4rem;background:var(--gold,#a8834a);color:#fff;border:none;font-family:'Jost',sans-serif;
-      font-size:0.6rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;text-decoration:none;
-      transition:background 0.2s,transform 0.2s;display:inline-block;}
-    .snav-cta:hover{background:#c9a96e;transform:translateY(-1px);}
-    .snav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-    .snav-burger span{width:22px;height:1.5px;background:var(--ash,#6e6e6e);display:block;transition:all 0.3s;}
-    .snav-mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;background:rgba(248,246,241,0.98);
-      backdrop-filter:blur(20px);padding:1.5rem 2rem;z-index:499;border-bottom:1px solid rgba(0,0,0,0.08);flex-direction:column;gap:0;}
-    .snav-mobile-menu.open{display:flex;}
-    .snav-mobile-menu a{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash,#6e6e6e);
-      text-decoration:none;padding:1rem 0;border-bottom:1px solid rgba(0,0,0,0.06);transition:color 0.2s;}
-    .snav-mobile-menu a:last-child{border-bottom:none;}
-    .snav-mobile-menu a:hover,.snav-mobile-menu a.active{color:var(--gold,#a8834a);}
-    @media(max-width:900px){.snav-links{display:none;}.snav-burger{display:flex;}.snav-lang{display:none;}}
-    @media(max-width:600px){.snav{padding:0 1.5rem;}.snav-cta{display:none;}}
-  `;
-  document.head.appendChild(style);
-
-  const nav = document.createElement('header');
-  nav.className = 'snav';
-  nav.id = 'siteNav';
-  nav.innerHTML = `
-    <a href="vogue-japon-toppage.html" class="snav-logo"><em>Votre</em> Japon sur Mesure</a>
-    <ul class="snav-links">
-      <li><a href="four-seasons-journey.html">4 Saisons</a></li>
-      <li><a href="planification-form.html">Planifier</a></li>
-      <li><a href="concierge-payment.html">Concierge</a></li>
-      <li><a href="actualites-japon.html">Actualités</a></li>
-      <li><a href="taiken-japon.html">Expériences</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
-    <div class="snav-right">
-      <div class="snav-lang">
-        <a href="#" class="active">FR</a>
-        <span class="snav-lang-sep">|</span>
-        <a href="#">JP</a>
-      </div>
-      <a href="planification-form.html" class="snav-cta">Planifier →</a>
-      <button class="snav-burger" id="snavBurger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  `;
-
-  const mobileMenu = document.createElement('div');
-  mobileMenu.className = 'snav-mobile-menu';
-  mobileMenu.id = 'snavMobile';
-  mobileMenu.innerHTML = `
-    <a href="vogue-japon-toppage.html">🏠 Accueil</a>
-    <a href="planification-form.html">✦ Planifier mon voyage (gratuit)</a>
-    <a href="concierge-payment.html">⊛ Concierge & Tarifs</a>
-    <a href="taiken-japon.html">🍵 Taiken · Expériences</a>
-    <a href="actualites-japon.html">📡 Actualités</a>
-    <a href="contact.html" class="active">✉ Contact</a>
-  `;
-
-  document.body.insertBefore(mobileMenu, document.body.firstChild);
-  document.body.insertBefore(nav, mobileMenu);
-
-  document.getElementById('snavBurger').addEventListener('click', function () {
-    document.getElementById('snavMobile').classList.toggle('open');
-  });
-})();
-</script>
+<script src="nav-shared.js"></script>
 </body>
 </html>

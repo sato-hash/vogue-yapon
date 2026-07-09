@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Un concierge francophone dédié à votre voyage au Japon : conseils d'expert, réservations et assistance sur place. Formules dès 10 €.">
 <meta name="twitter:image" content="https://japon.progic.jp/img/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&family=Montserrat:wght@400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
 <script src="https://js.stripe.com/v3/"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -191,19 +191,7 @@ body{overflow-x:hidden;background:#f5f0e8;color:#0f0e0b;font-family:'Jost',sans-
 <body>
 
 <!-- NAV (shared script) -->
-<script>
-/* Shared nav inline — lightweight fallback si nav-shared.js absent */
-(function(){
-  var style = document.createElement('style');
-  style.textContent = '.snav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:58px;background:rgba(248,246,241,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.07);font-family:Jost,sans-serif;}.snav-logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.1rem;font-weight:300;color:#0c0c0c;text-decoration:none;white-space:nowrap;}.snav-logo em{font-style:italic;color:#a8834a;}.snav-links{display:flex;gap:0;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}.snav-links a{display:block;padding:0 .9rem;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#7a7a7a;text-decoration:none;transition:color .2s;line-height:58px;}.snav-links a:hover,.snav-links a.active{color:#a8834a;}.snav-cta{padding:.5rem 1.3rem;background:#a8834a;color:#fff;border:none;font-family:Jost,sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s;}.snav-cta:hover{background:#c9a96e;}@media(max-width:860px){.snav-links{display:none;}}@media(max-width:560px){.snav{padding:0 1.2rem;}.snav-cta{display:none;}}';
-  document.head.appendChild(style);
-  var nav = document.createElement('header');
-  nav.id = 'siteNav';
-  nav.className = 'snav';
-  nav.innerHTML = '<a href="vogue-japon-toppage.html" class="snav-logo"><em>Votre</em> Japon sur Mesure</a><ul class="snav-links"><li><a href="four-seasons-journey.html">四季</a></li><li><a href="planification-form.html">Planifier</a></li><li><a href="concierge-payment.html" class="active">Concierge</a></li><li><a href="taiken-japon.html">Expériences</a></li><li><a href="ma-experience-japon.html">Mon voyage</a></li><li><a href="contact.html">Contact</a></li></ul><div><a href="planification-form.html" class="snav-cta">Planifier →</a></div>';
-  document.body.insertBefore(nav, document.body.firstChild);
-})();
-</script>
+<script src="nav-shared.js"></script>
 <div class="nav-spacer"></div>
 
 <!-- HERO -->
