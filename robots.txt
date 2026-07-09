@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ru.japon.progic.jp/sitemap.xml
