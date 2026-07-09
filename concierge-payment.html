@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concierge — Votre Japon sur Mesure</title>
-<meta name="description" content="Un concierge francophone dédié à votre voyage au Japon : conseils d'expert, réservations et assistance sur place. Formules dès 10 €.">
-<link rel="canonical" href="https://japon.progic.jp/concierge-payment.html">
+<title>Консьерж — Votre Japon sur Mesure</title>
+<meta name="description" content="Русскоговорящий консьерж, полностью посвящённый вашему путешествию в Японию: советы эксперта, бронирования и помощь на месте. Пакеты от 10 €.">
+<link rel="canonical" href="https://ru.japon.progic.jp/concierge-payment.html">
+<link rel="alternate" hreflang="ru" href="https://ru.japon.progic.jp/concierge-payment.html">
+<link rel="alternate" hreflang="fr" href="https://japon.progic.jp/concierge-payment.html">
+<link rel="alternate" hreflang="x-default" href="https://japon.progic.jp/concierge-payment.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Votre Japon sur Mesure">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Concierge — Votre Japon sur Mesure">
-<meta property="og:description" content="Un concierge francophone dédié à votre voyage au Japon : conseils d'expert, réservations et assistance sur place. Formules dès 10 €.">
-<meta property="og:url" content="https://japon.progic.jp/concierge-payment.html">
-<meta property="og:image" content="https://japon.progic.jp/img/og-image.jpg">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Консьерж — Votre Japon sur Mesure">
+<meta property="og:description" content="Русскоговорящий консьерж, полностью посвящённый вашему путешествию в Японию: советы эксперта, бронирования и помощь на месте. Пакеты от 10 €.">
+<meta property="og:url" content="https://ru.japon.progic.jp/concierge-payment.html">
+<meta property="og:image" content="https://ru.japon.progic.jp/img/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Concierge — Votre Japon sur Mesure">
-<meta name="twitter:description" content="Un concierge francophone dédié à votre voyage au Japon : conseils d'expert, réservations et assistance sur place. Formules dès 10 €.">
-<meta name="twitter:image" content="https://japon.progic.jp/img/og-image.jpg">
+<meta name="twitter:title" content="Консьерж — Votre Japon sur Mesure">
+<meta name="twitter:description" content="Русскоговорящий консьерж, полностью посвящённый вашему путешествию в Японию: советы эксперта, бронирования и помощь на месте. Пакеты от 10 €.">
+<meta name="twitter:image" content="https://ru.japon.progic.jp/img/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&family=Montserrat:wght@400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
 <script src="https://js.stripe.com/v3/"></script>
@@ -70,6 +73,13 @@ body{overflow-x:hidden;background:#f5f0e8;color:#0f0e0b;font-family:'Jost',sans-
 .plan-input-btn:hover{background:#a8834a;}
 .plan-badge{font-size:.6rem;color:#2a6040;background:#f0f7f3;border:1px solid rgba(42,96,64,.2);padding:.42rem .9rem;display:none;border-radius:2px;}
 .plan-badge.show{display:inline-block;}
+
+/* ── CURRENCY TOGGLE ── */
+.currency-toggle{display:inline-flex;border:1px solid rgba(0,0,0,.14);margin-bottom:1.4rem;}
+.cur-btn{padding:.55rem 1.3rem;background:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.55rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#6a6460;transition:all .2s;}
+.cur-btn+.cur-btn{border-left:1px solid rgba(0,0,0,.14);}
+.cur-btn.active{background:#a8834a;color:#fff;}
+.currency-note{font-size:.53rem;color:#b0a898;margin:.3rem 0 1.6rem;line-height:1.6;}
 
 /* ── FORMULES ACCORDION ── */
 .formules-label{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:#6a6460;padding:.6rem 0 .7rem;border-bottom:1px solid rgba(0,0,0,.07);margin-bottom:0;}
@@ -199,75 +209,82 @@ body{overflow-x:hidden;background:#f5f0e8;color:#0f0e0b;font-family:'Jost',sans-
   <div class="hero-left">
     <div class="eyebrow">
       <span class="eyebrow-line"></span>
-      <span class="eyebrow-text">Concierge · Service personnalisé</span>
+      <span class="eyebrow-text">Консьерж · Персональный сервис</span>
     </div>
-    <h1>Bienvenue dans un pays<em>plein de découvertes !</em></h1>
-    <p class="hero-sub">Nous rendrons votre voyage au Japon plus sûr et plus enrichissant.</p>
+    <h1>Добро пожаловать в страну<em>бесконечных открытий!</em></h1>
+    <p class="hero-sub">Мы сделаем ваше путешествие в Японию более безопасным и насыщенным.</p>
     <div class="hero-badge-row">
-      <span class="hero-badge">✦ Conseils experts</span>
-      <span class="hero-badge">✦ Assistance au Japon</span>
-      <span class="hero-badge">✦ À partir de €10</span>
+      <span class="hero-badge">✦ Советы экспертов</span>
+      <span class="hero-badge">✦ Помощь в Японии</span>
+      <span class="hero-badge">✦ От €10</span>
     </div>
   </div>
   <div class="hero-right">
-    <img src="img/embedded/emb-3e94e2fa9a.jpg" alt="Votre concierge Japon">
+    <img src="img/embedded/emb-3e94e2fa9a.jpg" alt="Ваш консьерж в Японии">
   </div>
 </section>
 
 <!-- GUIDE STRIP -->
 <div class="guide-strip">
-  <img class="guide-photo-sm" src="img/embedded/emb-996d6fe042.png" alt="Guide francophone">
+  <img class="guide-photo-sm" src="img/embedded/emb-996d6fe042.png" alt="Русскоговорящий гид">
   <div class="guide-info">
-    <div class="guide-name">Votre guide — <em>Nos Guides Locaux</em></div>
-    <div class="guide-role">Guides francophones · Résidents au Japon · Experts terrain</div>
-    <div class="guide-quote">« Découvrez le Japon authentique — bien au-delà des circuits touristiques habituels. »</div>
+    <div class="guide-name">Ваш гид — <em>наши местные гиды</em></div>
+    <div class="guide-role">Русскоговорящие гиды · живут в Японии · эксперты на месте</div>
+    <div class="guide-quote">«Откройте для себя настоящую Японию — далеко за пределами привычных туристических маршрутов».</div>
   </div>
 </div>
 
 <!-- BOOKING SECTION -->
 <div class="booking-section" id="booking">
-  <p class="sec-eyebrow">Réservation · Votre commande</p>
-  <h2 class="sec-title">Choisissez votre <em>accompagnement</em></h2>
-  <p class="sec-sub">Entrez votre code de plan IA, sélectionnez votre formule de base et ajoutez les services souhaités. Votre concierge consultera votre itinéraire avant de vous contacter.</p>
+  <p class="sec-eyebrow">Бронирование · Ваш заказ</p>
+  <h2 class="sec-title">Выберите ваше <em>сопровождение</em></h2>
+  <p class="sec-sub">Введите код вашего ИИ-плана, выберите базовый пакет и добавьте нужные услуги. Ваш консьерж изучит ваш маршрут прежде чем связаться с вами.</p>
 
   <!-- ① PLAN CODE -->
   <div class="plan-input-block">
-    <span class="plan-input-label">① Code de plan IA</span>
-    <input type="text" class="plan-input-field" id="plan-number" placeholder="Ex : VJM-2026-XXXXX" maxlength="20">
-    <button class="plan-input-btn" onclick="loadPlan()">Charger mon plan →</button>
+    <span class="plan-input-label">① Код ИИ-плана</span>
+    <input type="text" class="plan-input-field" id="plan-number" placeholder="Напр.: VJM-2026-XXXXX" maxlength="20">
+    <button class="plan-input-btn" onclick="loadPlan()">Загрузить мой план →</button>
     <span class="plan-badge" id="plan-badge"></span>
   </div>
 
   <!-- CLIENT SUMMARY BANNER -->
   <div class="client-banner" id="client-summary-banner">
-    <div class="client-banner-label">✦ Données de votre plan récupérées</div>
+    <div class="client-banner-label">✦ Данные вашего плана получены</div>
     <div class="client-banner-text" id="cs-text"></div>
   </div>
 
+  <!-- CURRENCY TOGGLE -->
+  <div class="currency-toggle" role="group" aria-label="Валюта">
+    <button type="button" data-cur="eur" class="cur-btn active" onclick="setCurrency('eur')">EUR €</button>
+    <button type="button" data-cur="usd" class="cur-btn" onclick="setCurrency('usd')">USD $</button>
+  </div>
+  <p class="currency-note">Цены в USD указаны по справочному курсу и периодически пересматриваются (не в реальном времени).</p>
+
   <!-- ② FORMULES DE BASE (accordion) -->
-  <div class="formules-label">② Formule de base — cliquez pour découvrir le détail</div>
+  <div class="formules-label">② Базовый пакет — нажмите, чтобы увидеть подробности</div>
 
   <!-- Formule 01 -->
   <div class="formule-row" id="fr1" onclick="toggleFormule('fr1')">
     <div class="formule-header">
       <span class="formule-num">01</span>
       <div class="formule-name">
-        <div class="formule-name-fr">Offre de <em>démarrage</em></div>
+        <div class="formule-name-fr">Стартовый <em>пакет</em></div>
         <span class="formule-name-jp">導入プラン</span>
       </div>
       <div class="formule-price-col">
-        <div class="formule-price">€ 10</div>
-        <span class="formule-price-note">par voyage</span>
+        <div class="formule-price" data-key="10">€ 10</div>
+        <span class="formule-price-note">за поездку</span>
       </div>
       <div class="formule-arrow">+</div>
     </div>
     <div class="formule-body">
       <ul class="formule-features">
-        <li>Consultation personnalisée avec un expert Japon — itinéraire, transports, hébergement, conseils culturels</li>
-        <li>Révision de votre plan IA : corrections logistiques et enrichissements exclusifs</li>
-        <li>Assistance téléphonique gratuite en français pendant tout votre séjour au Japon</li>
+        <li>Персональная консультация с экспертом по Японии — маршрут, транспорт, проживание, культурные советы</li>
+        <li>Проверка вашего ИИ-плана: логистические поправки и эксклюзивные дополнения</li>
+        <li>Бесплатная телефонная поддержка на русском языке на протяжении всего пребывания в Японии</li>
       </ul>
-      <button class="btn-select-formule" data-formule="Offre de démarrage" data-price="10" onclick="selectFormule(this,event)">Sélectionner cette formule</button>
+      <button class="btn-select-formule" data-formule="Стартовый пакет" data-price="10" onclick="selectFormule(this,event)">Выбрать этот пакет</button>
     </div>
   </div>
 
@@ -276,22 +293,22 @@ body{overflow-x:hidden;background:#f5f0e8;color:#0f0e0b;font-family:'Jost',sans-
     <div class="formule-header">
       <span class="formule-num">02</span>
       <div class="formule-name">
-        <div class="formule-name-fr">Guide journée — <em>région de Tokyo</em></div>
+        <div class="formule-name-fr">Гид на день — <em>регион Токио</em></div>
         <span class="formule-name-jp">首都圏１日ガイド</span>
       </div>
       <div class="formule-price-col">
-        <div class="formule-price">€ 150</div>
-        <span class="formule-price-note">par journée</span>
+        <div class="formule-price" data-key="150">€ 150</div>
+        <span class="formule-price-note">за день</span>
       </div>
       <div class="formule-arrow">+</div>
     </div>
     <div class="formule-body">
       <ul class="formule-features">
-        <li>Guide francophone dédié pour une journée complète dans la région de Tokyo (Asakusa, Shibuya, Nikko, Kamakura, Yokohama…)</li>
-        <li>Itinéraire construit selon vos envies — culture, gastronomie, shopping, nature</li>
-        <li>Commande possible depuis la France ou directement depuis le Japon après votre arrivée</li>
+        <li>Русскоговорящий гид на весь день в регионе Токио (Асакуса, Сибуя, Никко, Камакура, Йокогама…)</li>
+        <li>Маршрут, составленный по вашим пожеланиям — культура, гастрономия, шопинг, природа</li>
+        <li>Заказ возможен заранее или сразу по прибытии в Японию</li>
       </ul>
-      <button class="btn-select-formule" data-formule="Guide journée — région de Tokyo" data-price="150" onclick="selectFormule(this,event)">Sélectionner cette formule</button>
+      <button class="btn-select-formule" data-formule="Гид на день — регион Токио" data-price="150" onclick="selectFormule(this,event)">Выбрать этот пакет</button>
     </div>
   </div>
 
@@ -300,182 +317,182 @@ body{overflow-x:hidden;background:#f5f0e8;color:#0f0e0b;font-family:'Jost',sans-
     <div class="formule-header">
       <span class="formule-num">03</span>
       <div class="formule-name">
-        <div class="formule-name-fr">Formule <em>complète</em></div>
+        <div class="formule-name-fr">Полный <em>пакет</em></div>
         <span class="formule-name-jp">完全パッケージ · 最もコンプリート</span>
       </div>
       <div class="formule-price-col">
-        <div class="formule-price">€ 500</div>
-        <span class="formule-price-note">par séjour</span>
+        <div class="formule-price" data-key="500">€ 500</div>
+        <span class="formule-price-note">за поездку</span>
       </div>
       <div class="formule-arrow">+</div>
     </div>
     <div class="formule-body">
       <ul class="formule-features">
-        <li>Accueil personnalisé à l'aéroport de Haneda ou Narita par votre concierge</li>
-        <li>Réservation de votre hôtel du premier soir &amp; transfert privé aéroport → hôtel inclus</li>
-        <li>Recommandation et réservation d'un restaurant japonais pour votre première soirée</li>
-        <li>Prise en charge de 5 réservations anticipées (restaurants, activités, temples, musées…)</li>
+        <li>Персональная встреча в аэропорту Ханэда или Нарита вашим консьержем</li>
+        <li>Бронирование отеля на первую ночь и частный трансфер аэропорт → отель включены</li>
+        <li>Рекомендация и бронирование японского ресторана на первый вечер</li>
+        <li>Организация 5 предварительных бронирований (рестораны, мероприятия, храмы, музеи…)</li>
       </ul>
-      <button class="btn-select-formule" data-formule="Formule complète — Arrivée &amp; Accueil" data-price="500" onclick="selectFormule(this,event)">Sélectionner cette formule</button>
+      <button class="btn-select-formule" data-formule="Полный пакет — прибытие и встреча" data-price="500" onclick="selectFormule(this,event)">Выбрать этот пакет</button>
     </div>
   </div>
 
   <!-- ③ OPTIONS -->
-  <div class="opt-title">③ &nbsp;Services à la carte — ajoutez ceux qui vous intéressent</div>
+  <div class="opt-title">③ &nbsp;Дополнительные услуги — добавьте те, что вас интересуют</div>
 
-  <div class="opt-group">🛬 &nbsp;Accueil aéroport</div>
-  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Accueil à l'aéroport (Haneda ou Narita)" data-tbd="1">
+  <div class="opt-group">🛬 &nbsp;Встреча в аэропорту</div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Встреча в аэропорту (Ханэда или Нарита)" data-tbd="1">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">👋</div>
-    <div class="opt-info"><div class="opt-name">Accueil à l'aéroport</div><div class="opt-desc">Haneda ou Narita — votre concierge vous accueille à l'arrivée</div></div>
-    <div class="opt-price tbd">Prix à confirmer</div>
+    <div class="opt-info"><div class="opt-name">Встреча в аэропорту</div><div class="opt-desc">Ханэда или Нарита — консьерж встретит вас по прибытии</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
   </div>
-  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Transfert privé aéroport ↔ hôtel" data-tbd="1">
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Частный трансфер аэропорт ↔ отель" data-tbd="1">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">🚗</div>
-    <div class="opt-info"><div class="opt-name">Transfert privé aéroport ↔ hôtel</div><div class="opt-desc">Véhicule privé avec chauffeur — aller ou aller-retour</div></div>
-    <div class="opt-price tbd">Prix à confirmer</div>
+    <div class="opt-info"><div class="opt-name">Частный трансфер аэропорт ↔ отель</div><div class="opt-desc">Частный автомобиль с водителем — в одну сторону или туда-обратно</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
   </div>
 
-  <div class="opt-group">📋 &nbsp;Réservations anticipées</div>
-  <div class="opt-row" onclick="toggleOpt(this)" data-price="15" data-name="Réservation anticipée — 1 prestation">
+  <div class="opt-group">📋 &nbsp;Предварительные бронирования</div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="15" data-name="Предварительное бронирование — 1 услуга">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">📌</div>
-    <div class="opt-info"><div class="opt-name">Réservation anticipée — 1 prestation</div><div class="opt-desc">Musée, atelier, temple zen, onsen privé, spectacle…</div></div>
+    <div class="opt-info"><div class="opt-name">Предварительное бронирование — 1 услуга</div><div class="opt-desc">Музей, мастер-класс, дзен-храм, частный онсэн, шоу…</div></div>
     <div class="opt-price">€ 15</div>
   </div>
-  <div class="opt-row" onclick="toggleOpt(this)" data-price="50" data-name="Forfait 5 réservations anticipées">
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="50" data-name="Пакет из 5 предварительных бронирований">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">✦</div>
-    <div class="opt-info"><div class="opt-name">Forfait 5 réservations anticipées</div><div class="opt-desc">Ryokan, restaurants réputés, ateliers artisanaux… — économisez €25</div></div>
+    <div class="opt-info"><div class="opt-name">Пакет из 5 предварительных бронирований</div><div class="opt-desc">Рёкан, известные рестораны, ремесленные мастерские… — экономия €25</div></div>
     <div class="opt-price">€ 50</div>
   </div>
-  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Réservation hôtel / ryokan" data-tbd="1">
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Бронирование отеля / рёкана" data-tbd="1">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">🏨</div>
-    <div class="opt-info"><div class="opt-name">Réservation hôtel / ryokan</div><div class="opt-desc">Hôtels, ryokans, auberges traditionnelles — sur devis</div></div>
-    <div class="opt-price tbd">Prix à confirmer</div>
+    <div class="opt-info"><div class="opt-name">Бронирование отеля / рёкана</div><div class="opt-desc">Отели, рёканы, традиционные гостиницы — по индивидуальной смете</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
   </div>
-  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Réservation train / shinkansen" data-tbd="1">
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Бронирование поезда / синкансэна" data-tbd="1">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">🚄</div>
-    <div class="opt-info"><div class="opt-name">Réservation train / shinkansen</div><div class="opt-desc">Billets shinkansen, trains express, bus longue distance</div></div>
-    <div class="opt-price tbd">Prix à confirmer</div>
+    <div class="opt-info"><div class="opt-name">Бронирование поезда / синкансэна</div><div class="opt-desc">Билеты на синкансэн, экспресс-поезда, автобусы дальнего следования</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
   </div>
 
-  <div class="opt-group">🍜 &nbsp;Guide gastronomique</div>
-  <div class="opt-row" onclick="toggleOpt(this)" data-price="50" data-name="Accompagnement restaurant japonais">
+  <div class="opt-group">🍜 &nbsp;Гастрономический гид</div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="50" data-name="Сопровождение в японский ресторан">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">🍣</div>
-    <div class="opt-info"><div class="opt-name">Accompagnement restaurant japonais</div><div class="opt-desc">Sélection, réservation et conseils pour un restaurant authentique (kaiseki, izakaya, sushi…)</div></div>
+    <div class="opt-info"><div class="opt-name">Сопровождение в японский ресторан</div><div class="opt-desc">Подбор, бронирование и советы по аутентичному ресторану (кайсэки, идзакая, суши…)</div></div>
     <div class="opt-price">€ 50</div>
   </div>
 
-  <div class="opt-group">🆘 &nbsp;Urgences &amp; assistance médicale</div>
-  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Assistance urgence médicale" data-tbd="1">
+  <div class="opt-group">🆘 &nbsp;Экстренная помощь и медицинская поддержка</div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Помощь в медицинской экстренной ситуации" data-tbd="1">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">🏥</div>
-    <div class="opt-info"><div class="opt-name">Assistance urgence médicale</div><div class="opt-desc">Coordination hôpital, interprétariat médical, accompagnement à distance — sur devis</div></div>
-    <div class="opt-price tbd">Prix à confirmer</div>
+    <div class="opt-info"><div class="opt-name">Помощь в медицинской экстренной ситуации</div><div class="opt-desc">Координация с больницей, медицинский перевод, дистанционное сопровождение — по смете</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
   </div>
-  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Intervention d'urgence sur place" data-tbd="1">
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Экстренный выезд на место" data-tbd="1">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">🚨</div>
-    <div class="opt-info"><div class="opt-name">Intervention d'urgence sur place</div><div class="opt-desc">Déplacement physique du concierge en cas d'urgence grave</div></div>
-    <div class="opt-price tbd">Prix à confirmer</div>
+    <div class="opt-info"><div class="opt-name">Экстренный выезд на место</div><div class="opt-desc">Личный выезд консьержа в случае серьёзной чрезвычайной ситуации</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
   </div>
 
-  <div class="opt-group">🗺️ &nbsp;Guide privé francophone</div>
-  <div class="opt-row" onclick="toggleOpt(this, 'guide')" data-price="0" data-name="Programme de guide personnalisé" data-tbd="1" data-group="guide">
+  <div class="opt-group">🗺️ &nbsp;Русскоговорящий частный гид</div>
+  <div class="opt-row" onclick="toggleOpt(this, 'guide')" data-price="0" data-name="Индивидуальная программа с гидом" data-tbd="1" data-group="guide">
     <div class="opt-check"><span class="opt-check-mark">✓</span></div>
     <div class="opt-icon">📍</div>
-    <div class="opt-info"><div class="opt-name">Programme de guide personnalisé</div><div class="opt-desc">Région hors Tokyo ou programme sur plusieurs jours — tarif établi avec votre concierge</div></div>
-    <div class="opt-price tbd">Prix à confirmer</div>
+    <div class="opt-info"><div class="opt-name">Индивидуальная программа с гидом</div><div class="opt-desc">Регион за пределами Токио или программа на несколько дней — тариф согласовывается с консьержем</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
   </div>
 
   <!-- SUMMARY -->
   <div class="summary-block">
-    <div class="summary-ttl">Récapitulatif de votre commande</div>
+    <div class="summary-ttl">Итог вашего заказа</div>
     <div class="sum-lines" id="sum-lines">
       <div class="sum-line" id="sum-base-line" style="display:none;"><span id="sum-base-name">—</span><span id="sum-base-price">—</span></div>
     </div>
     <div class="sum-total">
-      <span class="sum-total-label">Total</span>
-      <span class="sum-total-amt" id="total-display">— Sélectionnez une formule</span>
+      <span class="sum-total-label">Итого</span>
+      <span class="sum-total-amt" id="total-display">— Выберите пакет</span>
     </div>
-    <p class="sum-note">* Le paiement en ligne concerne la <strong>formule de base</strong>. Les options sélectionnées (y compris « Prix à confirmer ») sont confirmées et facturées séparément par votre concierge dans les 24h suivant votre commande.</p>
+    <p class="sum-note">* Онлайн-оплата касается только <strong>базового пакета</strong>. Выбранные опции (в том числе «Цена уточняется») подтверждаются и оплачиваются отдельно через консьержа в течение 24 часов после вашего заказа.</p>
   </div>
 
   <!-- CONTACT & PAYMENT -->
   <div class="contact-block" id="payment-block">
-    <div class="contact-ttl">Vos coordonnées &amp; paiement</div>
+    <div class="contact-ttl">Ваши контактные данные и оплата</div>
     <div class="field-row">
       <div class="field-group" style="margin:0">
-        <label class="field-label">Prénom <span class="req">*</span></label>
-        <input type="text" class="field-input" id="pay-prenom" placeholder="Marie">
+        <label class="field-label">Имя <span class="req">*</span></label>
+        <input type="text" class="field-input" id="pay-prenom" placeholder="Мария">
       </div>
       <div class="field-group" style="margin:0">
-        <label class="field-label">Nom</label>
-        <input type="text" class="field-input" id="pay-nom" placeholder="Dubois">
+        <label class="field-label">Фамилия</label>
+        <input type="text" class="field-input" id="pay-nom" placeholder="Иванова">
       </div>
     </div>
     <div class="field-group">
       <label class="field-label">Email <span class="req">*</span></label>
-      <input type="email" class="field-input" id="pay-email" placeholder="marie.dubois@email.com">
+      <input type="email" class="field-input" id="pay-email" placeholder="maria.ivanova@email.com">
     </div>
     <div class="field-group">
-      <label class="field-label">Téléphone / WhatsApp</label>
-      <input type="tel" class="field-input" id="pay-tel" placeholder="+33 6 00 00 00 00">
+      <label class="field-label">Телефон / WhatsApp</label>
+      <input type="tel" class="field-input" id="pay-tel" placeholder="+7 900 000 00 00">
     </div>
     <div class="field-group" style="margin-bottom:0">
-      <label class="field-label">Carte bancaire <span class="req">*</span></label>
+      <label class="field-label">Банковская карта <span class="req">*</span></label>
       <div id="stripe-card-element"></div>
       <div id="stripe-error"></div>
     </div>
     <button class="btn-pay" id="btn-pay" onclick="submitPayment()">
-      🔒 Confirmer et payer — <span id="btn-total">sélectionnez une formule</span>
+      🔒 Подтвердить и оплатить — <span id="btn-total">выберите пакет</span>
     </button>
     <div class="pay-secure">
-      <span>🔒 Paiement 100% sécurisé par Stripe · Données chiffrées SSL</span>
+      <span>🔒 Оплата на 100% защищена Stripe · Данные шифруются по SSL</span>
     </div>
   </div>
 
   <!-- SUCCESS -->
   <div class="success-block" id="success-block">
     <div class="success-icon">🎌</div>
-    <div class="success-title">Merci — votre voyage commence ici !</div>
-    <p class="success-sub">Votre commande a été enregistrée. Votre concierge vous contactera par email dans les 24 heures pour confirmer votre sélection et commencer la préparation de votre voyage.<br><br>Préparez-vous à vivre le Japon autrement.</p>
+    <div class="success-title">Спасибо — ваше путешествие начинается здесь!</div>
+    <p class="success-sub">Ваш заказ зарегистрирован. Ваш консьерж свяжется с вами по электронной почте в течение 24 часов, чтобы подтвердить выбор и начать подготовку вашего путешествия.<br><br>Готовьтесь открыть Японию по-новому.</p>
   </div>
 </div>
 
 <!-- PROCESS -->
 <section class="process-section">
-  <div class="proc-eyebrow">Notre processus · Comment ça marche</div>
-  <h2 class="proc-title">De votre commande <em>à votre départ</em></h2>
+  <div class="proc-eyebrow">Как мы работаем · Наш процесс</div>
+  <h2 class="proc-title">От заказа <em>до вашего вылета</em></h2>
   <div class="proc-grid">
     <div class="proc-step">
       <div class="proc-num">01</div><div class="proc-icon">💳</div>
-      <div class="proc-name">Vous commandez</div>
-      <div class="proc-desc">Entrez votre code plan IA, choisissez votre formule et payez en ligne. Votre numéro de plan est enregistré automatiquement.</div>
-      <div class="proc-time">Immédiat</div>
+      <div class="proc-name">Вы делаете заказ</div>
+      <div class="proc-desc">Введите код вашего ИИ-плана, выберите пакет и оплатите онлайн. Номер вашего плана сохраняется автоматически.</div>
+      <div class="proc-time">Мгновенно</div>
     </div>
     <div class="proc-step">
       <div class="proc-num">02</div><div class="proc-icon">📞</div>
-      <div class="proc-name">Prise de contact</div>
-      <div class="proc-desc">Votre concierge vous contacte sous 24h par email et WhatsApp pour un entretien de découverte et consulte votre plan IA.</div>
-      <div class="proc-time">Sous 24h</div>
+      <div class="proc-name">Установление контакта</div>
+      <div class="proc-desc">Ваш консьерж свяжется с вами в течение 24 часов по email и WhatsApp для ознакомительной беседы и изучит ваш ИИ-план.</div>
+      <div class="proc-time">В течение 24 ч</div>
     </div>
     <div class="proc-step">
       <div class="proc-num">03</div><div class="proc-icon">✍️</div>
-      <div class="proc-name">Préparation</div>
-      <div class="proc-desc">Votre itinéraire est affiné, les réservations effectuées, votre programme complet vous est remis avant le départ.</div>
-      <div class="proc-time">3 à 5 jours</div>
+      <div class="proc-name">Подготовка</div>
+      <div class="proc-desc">Ваш маршрут уточняется, бронирования оформляются, полная программа передаётся вам до отъезда.</div>
+      <div class="proc-time">3–5 дней</div>
     </div>
     <div class="proc-step">
       <div class="proc-num">04</div><div class="proc-icon">✈️</div>
-      <div class="proc-name">Vous voyagez</div>
-      <div class="proc-desc">Tout est prêt. Votre concierge reste joignable par téléphone pendant tout votre séjour au Japon.</div>
-      <div class="proc-time">Pendant le voyage</div>
+      <div class="proc-name">Вы путешествуете</div>
+      <div class="proc-desc">Всё готово. Ваш консьерж остаётся на связи по телефону на протяжении всего вашего пребывания в Японии.</div>
+      <div class="proc-time">Во время поездки</div>
     </div>
   </div>
 </section>
@@ -483,10 +500,10 @@ body{overflow-x:hidden;background:#f5f0e8;color:#0f0e0b;font-family:'Jost',sans-
 <footer class="mini-footer">
   <a href="vogue-japon-toppage.html" class="mf-logo"><em>Votre</em> Japon sur Mesure</a>
   <div class="mf-links">
-    <a href="vogue-japon-toppage.html">Accueil</a>
-    <a href="four-seasons-journey.html">4 Saisons</a>
-    <a href="planification-form.html">Planifier</a>
-    <a href="taiken-japon.html">Expériences</a>
+    <a href="vogue-japon-toppage.html">Главная</a>
+    <a href="four-seasons-journey.html">4 сезона</a>
+    <a href="planification-form.html">Планирование</a>
+    <a href="taiken-japon.html">Впечатления</a>
   </div>
   <span class="mf-copy">© 2025 Votre Japon sur Mesure</span>
 </footer>
@@ -496,17 +513,45 @@ body{overflow-x:hidden;background:#f5f0e8;color:#0f0e0b;font-family:'Jost',sans-
    CONFIGURATION — À remplir par l'équipe
    ══════════════════════════════════════════════════════════ */
 
-// ① STRIPE PAYMENT LINKS — un lien LIVE par formule de base
+// ① STRIPE PAYMENT LINKS — un lien LIVE par formule de base, par devise (EUR / USD)
 //   → stripe.com (mode LIVE) → Payment Links → créer un lien par formule,
 //     puis remplacer chaque « REMPLACER… » par l'URL réelle (https://buy.stripe.com/...).
 var STRIPE_PAYMENT_LINKS = {
-  '10':  'https://buy.stripe.com/3cIcN6aRE7ez26FgzW3oA00',  // Offre de démarrage — €10
-  '150': 'https://buy.stripe.com/9B64gA2l88iD8v3cjG3oA01',  // Guide journée région de Tokyo — €150
-  '500': 'https://buy.stripe.com/5kQbJ2bVIfL57qZ4Re3oA02'   // Formule complète — €500
+  eur: {
+    '10' : 'https://buy.stripe.com/3cIcN6aRE7ez26FgzW3oA00',  // Стартовый пакет — €10
+    '150': 'https://buy.stripe.com/9B64gA2l88iD8v3cjG3oA01',  // Гид на день — регион Токио — €150
+    '500': 'https://buy.stripe.com/5kQbJ2bVIfL57qZ4Re3oA02'   // Полный пакет — €500
+  },
+  usd: {
+    '11' : 'REMPLACER_USD_11',   // à configurer — $11
+    '165': 'REMPLACER_USD_165',  // à configurer — $165
+    '550': 'REMPLACER_USD_550'   // à configurer — $550
+  }
 };
-function getPaymentLink()    { return STRIPE_PAYMENT_LINKS[String(BASE)] || ''; }
+var CURRENCY       = 'eur';                                       // devise par défaut
+var USD_FROM_EUR    = { '10':'11', '150':'165', '500':'550' };
+var PRICE_LABEL      = {
+  eur: { '10':'€ 10', '150':'€ 150', '500':'€ 500' },
+  usd: { '10':'$ 11', '150':'$ 165', '500':'$ 550' }
+};
+function getPaymentLink() {
+  if (CURRENCY === 'usd') { return STRIPE_PAYMENT_LINKS.usd[USD_FROM_EUR[String(BASE)]] || ''; }
+  return STRIPE_PAYMENT_LINKS.eur[String(BASE)] || '';
+}
 function isLinkConfigured(u) { return !!u && u.indexOf('buy.stripe.com') !== -1 && u.indexOf('REMPLACER') === -1; }
-function anyLinkConfigured() { return Object.keys(STRIPE_PAYMENT_LINKS).some(function(k){ return isLinkConfigured(STRIPE_PAYMENT_LINKS[k]); }); }
+function anyLinkConfigured() { return Object.keys(STRIPE_PAYMENT_LINKS.eur).some(function(k){ return isLinkConfigured(STRIPE_PAYMENT_LINKS.eur[k]); }); }
+
+/* ── Bascule de devise (EUR / USD) ── */
+function setCurrency(cur) {
+  if (cur !== 'eur' && cur !== 'usd') return;
+  CURRENCY = cur;
+  document.querySelectorAll('.cur-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.cur === cur); });
+  document.querySelectorAll('.formule-price[data-key]').forEach(function(el){
+    var key = el.dataset.key;
+    el.textContent = (PRICE_LABEL[cur] && PRICE_LABEL[cur][key]) || el.textContent;
+  });
+  renderSummary();
+}
 
 // ② PHP BACKEND
 // → Mettre order-handler.php dans le même dossier sur votre serveur
@@ -531,9 +576,9 @@ function initPaymentUI() {
     cardEl.closest('.field-group').style.display = 'none';
     document.getElementById('stripe-error').style.display = 'none';
     var btn = document.getElementById('btn-pay');
-    btn.innerHTML = '🔒 Procéder au paiement sécurisé — <span id="btn-total">sélectionnez une formule</span>';
+    btn.innerHTML = '🔒 Перейти к безопасной оплате — <span id="btn-total">выберите пакет</span>';
   } else {
-    cardEl.innerHTML = '<div style="padding:.85rem 1rem;border:1px solid rgba(0,0,0,.12);font-size:.72rem;color:#8a8580;font-family:Jost,sans-serif;line-height:1.7;">⚙️ <strong>Mode démonstration</strong><br>Configurez <strong>STRIPE_PAYMENT_LINK</strong> dans le code pour activer le vrai paiement CB.</div>';
+    cardEl.innerHTML = '<div style="padding:.85rem 1rem;border:1px solid rgba(0,0,0,.12);font-size:.72rem;color:#8a8580;font-family:Jost,sans-serif;line-height:1.7;">⚙️ <strong>Демонстрационный режим</strong><br>Настройте <strong>STRIPE_PAYMENT_LINK</strong> в коде, чтобы включить реальную оплату картой.</div>';
   }
 }
 
@@ -551,8 +596,8 @@ function selectFormule(btn, e) {
   e.stopPropagation();
   BASE = parseFloat(btn.dataset.price) || 0;
   BASE_NAME = btn.dataset.formule;
-  document.querySelectorAll('.btn-select-formule').forEach(function(b){ b.classList.remove('active'); b.textContent = 'Sélectionner cette formule'; });
-  btn.classList.add('active'); btn.textContent = '✓ Formule sélectionnée';
+  document.querySelectorAll('.btn-select-formule').forEach(function(b){ b.classList.remove('active'); b.textContent = 'Выбрать этот пакет'; });
+  btn.classList.add('active'); btn.textContent = '✓ Пакет выбран';
   document.querySelectorAll('.formule-row').forEach(function(r){ r.classList.remove('selected-plan'); });
   btn.closest('.formule-row').classList.add('selected-plan');
   renderSummary();
@@ -561,7 +606,7 @@ function selectFormule(btn, e) {
 /* ── Load plan from storage ── */
 async function loadPlan() {
   var n = document.getElementById('plan-number').value.trim().toUpperCase();
-  if (!n) { alert('Veuillez entrer votre numéro de plan.'); return; }
+  if (!n) { alert('Пожалуйста, введите номер вашего плана.'); return; }
   var b = document.getElementById('plan-badge');
   try {
     var result = await window.storage.get('vjm_plan_' + n, true);
@@ -575,14 +620,14 @@ async function loadPlan() {
       ].filter(Boolean).join('  ·  ');
       var banner = document.getElementById('client-summary-banner');
       if (banner) { banner.style.display='block'; document.getElementById('cs-text').textContent=summary; }
-      b.textContent='✓ Plan '+n+' chargé — données récupérées'; b.classList.add('show');
+      b.textContent='✓ План '+n+' загружен — данные получены'; b.classList.add('show');
       b.style.background='#e8f4ee'; b.style.color='#2a6040';
       window._loadedPlanKey=n; window._loadedPlanData=plan;
     } else {
-      b.textContent='✓ Plan '+n+' enregistré'; b.classList.add('show');
+      b.textContent='✓ План '+n+' сохранён'; b.classList.add('show');
       window._loadedPlanKey=n; window._loadedPlanData=null;
     }
-  } catch(e) { b.textContent='✓ Plan '+n+' enregistré'; b.classList.add('show'); window._loadedPlanKey=n; }
+  } catch(e) { b.textContent='✓ План '+n+' сохранён'; b.classList.add('show'); window._loadedPlanKey=n; }
 }
 
 /* ── Toggle options ── */
@@ -591,47 +636,61 @@ function toggleOpt(el, group) {
   el.classList.toggle('selected'); renderSummary();
 }
 
-/* ── Render summary ── */
+/* ── Render summary ──
+   Note : seule la formule de base dispose d'un tarif USD (PRICE_LABEL).
+   Les options n'ont pas de tarif USD dédié — elles restent affichées en EUR
+   (elles sont de toute façon facturées séparément par le concierge). */
 function renderSummary() {
   var rows = document.querySelectorAll('.opt-row.selected');
   var total = BASE, hasTbd = false, html = '';
-  if (BASE_NAME) html += '<div class="sum-line base-line"><span>'+BASE_NAME+'</span><span>€ '+BASE+'</span></div>';
+  var baseLabel = (BASE_NAME && PRICE_LABEL[CURRENCY] && PRICE_LABEL[CURRENCY][String(BASE)]) || ('€ '+BASE);
+  if (BASE_NAME) html += '<div class="sum-line base-line"><span>'+BASE_NAME+'</span><span>'+baseLabel+'</span></div>';
   rows.forEach(function(r){
-    if (r.dataset.tbd==='1') { hasTbd=true; html+='<div class="sum-line"><span>'+r.dataset.name+'</span><span style="font-size:.55rem;color:#b0a898;">À confirmer</span></div>'; }
+    if (r.dataset.tbd==='1') { hasTbd=true; html+='<div class="sum-line"><span>'+r.dataset.name+'</span><span style="font-size:.55rem;color:#b0a898;">Уточняется</span></div>'; }
     else { total+=parseFloat(r.dataset.price)||0; html+='<div class="sum-line"><span>'+r.dataset.name+'</span><span>€ '+r.dataset.price+'</span></div>'; }
   });
-  if (!html) html='<div class="sum-line" style="color:#b0a898;font-style:italic;font-size:.7rem;">Sélectionnez une formule ci-dessus pour commencer.</div>';
+  if (!html) html='<div class="sum-line" style="color:#b0a898;font-style:italic;font-size:.7rem;">Выберите пакет выше, чтобы начать.</div>';
   document.getElementById('sum-lines').innerHTML = html;
-  var t = BASE_NAME ? ('€ '+total+(hasTbd?' +':'')) : '— Sélectionnez une formule';
+  // Le total combiné (pack de base + options) reste calculé en EUR — c'est aussi le
+  // montant réellement débité en ligne (formule de base seule, options facturées à part).
+  var t = BASE_NAME ? ('€ '+total+(hasTbd?' +':'')) : '— Выберите пакет';
   document.getElementById('total-display').textContent = t;
   var bt = document.getElementById('btn-total');
-  if(bt) bt.textContent = BASE_NAME ? ('€ '+total+(hasTbd?' + options':'')) : 'sélectionnez une formule';
+  if(bt) bt.textContent = BASE_NAME ? (baseLabel+(hasTbd?' + опции':'')) : 'выберите пакет';
 }
 
 /* ══════════════════════════════════════════════════════════
    SUBMIT PAYMENT
    ══════════════════════════════════════════════════════════ */
 async function submitPayment() {
-  if (!BASE_NAME) { alert('Veuillez sélectionner une formule (étape ②).'); return; }
+  if (!BASE_NAME) { alert('Пожалуйста, выберите пакет (шаг ②).'); return; }
   var prenom = document.getElementById('pay-prenom').value.trim();
   var nom    = document.getElementById('pay-nom').value.trim();
   var email  = document.getElementById('pay-email').value.trim();
   var tel    = document.getElementById('pay-tel').value.trim();
-  if (!prenom || !email) { alert('Veuillez remplir votre prénom et email.'); return; }
+  if (!prenom || !email) { alert('Пожалуйста, укажите ваше имя и email.'); return; }
+
+  // Note : les liens USD ne sont pas encore configurés (placeholders "REMPLACER_USD_…").
+  // Si l'utilisateur a choisi USD sans lien valide, on l'avertit plutôt que de lancer
+  // silencieusement le mode démo — l'EUR reste toujours fonctionnel.
+  if (CURRENCY === 'usd' && !isLinkConfigured(getPaymentLink())) {
+    alert('Оплата в USD скоро будет доступна. Пожалуйста, выберите EUR € для оплаты сейчас.');
+    return;
+  }
 
   var btn = document.getElementById('btn-pay');
-  btn.disabled = true; btn.textContent = '⏳ Enregistrement en cours…';
+  btn.disabled = true; btn.textContent = '⏳ Сохранение…';
 
   var rows = document.querySelectorAll('.opt-row.selected');
   var total = BASE, hasTbd = false, optionsList = [];
   rows.forEach(function(r){
-    if (r.dataset.tbd==='1') { hasTbd=true; optionsList.push(r.dataset.name+' (à confirmer)'); }
+    if (r.dataset.tbd==='1') { hasTbd=true; optionsList.push(r.dataset.name+' (уточняется)'); }
     else { total+=parseFloat(r.dataset.price)||0; optionsList.push(r.dataset.name+' — €'+r.dataset.price); }
   });
 
   var orderKey = 'VJM-'+new Date().getFullYear()+'-'+Math.random().toString(36).substr(2,6).toUpperCase();
   var now = new Date();
-  var dateStr = now.toLocaleDateString('fr-FR')+' à '+now.toLocaleTimeString('fr-FR');
+  var dateStr = now.toLocaleDateString('ru-RU')+' в '+now.toLocaleTimeString('ru-RU');
 
   var order = {
     orderKey   : orderKey,
@@ -643,6 +702,7 @@ async function submitPayment() {
     telephone  : tel,
     planKey    : window._loadedPlanKey || 'DIRECT',
     formule    : BASE_NAME,
+    devise     : CURRENCY,
     options    : optionsList.join(' | '),
     total      : total,
     hasTbd     : hasTbd ? 'Oui' : 'Non'
@@ -653,9 +713,11 @@ async function submitPayment() {
   var optsHtml = optionsList.length
     ? optionsList.map(function(o){ return '<li>'+o+'</li>'; }).join('')
     : '<li>—</li>';
+  var curSymbol   = CURRENCY === 'usd' ? '$' : '€';
+  var baseAmount  = (PRICE_LABEL[CURRENCY] && PRICE_LABEL[CURRENCY][String(BASE)]) || (curSymbol+BASE);
   var orderBody =
     '<div style="font-family:sans-serif;line-height:1.8;color:#222;">'+
-    '<p style="font-size:13px;color:#a8834a;letter-spacing:.1em;margin:0 0 12px;">🧳 新規コンシェルジュ注文（サイト経由）</p>'+
+    '<p style="font-size:13px;color:#a8834a;letter-spacing:.1em;margin:0 0 12px;">🧳 【ロシア語版サイトからの注文】新規コンシェルジュ注文（サイト経由）</p>'+
     '<table style="border-collapse:collapse;font-size:14px;margin-bottom:14px;">'+
       '<tr><td style="padding:3px 14px 3px 0;color:#888;">注文番号</td><td>'+order.orderKey+'</td></tr>'+
       '<tr><td style="padding:3px 14px 3px 0;color:#888;">日時</td><td>'+order.date+'</td></tr>'+
@@ -663,8 +725,9 @@ async function submitPayment() {
       '<tr><td style="padding:3px 14px 3px 0;color:#888;">返信先メール</td><td><a href="mailto:'+order.email+'">'+order.email+'</a></td></tr>'+
       '<tr><td style="padding:3px 14px 3px 0;color:#888;">電話</td><td>'+(order.telephone||'—')+'</td></tr>'+
       '<tr><td style="padding:3px 14px 3px 0;color:#888;">プランキー</td><td>'+order.planKey+'</td></tr>'+
-      '<tr><td style="padding:3px 14px 3px 0;color:#888;">基本プラン</td><td>'+order.formule+'（€'+BASE+'）</td></tr>'+
-      '<tr><td style="padding:3px 14px 3px 0;color:#888;">合計（目安）</td><td>€'+order.total+(hasTbd?' +（要見積りあり）':'')+'</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">通貨</td><td>'+order.devise.toUpperCase()+'</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">基本プラン</td><td>'+order.formule+'（'+baseAmount+'）</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">合計（目安・EUR基準）</td><td>€'+order.total+(hasTbd?' +（要見積りあり）':'')+'</td></tr>'+
     '</table>'+
     '<p style="font-size:12px;color:#888;margin:0 0 4px;">オプション</p>'+
     '<ul style="font-size:14px;color:#555;margin:0 0 10px;padding-left:18px;">'+optsHtml+'</ul>'+
@@ -693,7 +756,7 @@ async function submitPayment() {
     await window.storage.set('vjm_order_'+orderKey, JSON.stringify(order), true);
   } catch(e) {}
 
-  // ③ Stripe Payment Link (selon la formule) ou mode démo
+  // ③ Stripe Payment Link (selon la formule et la devise) ou mode démo
   var payLink = getPaymentLink();
   if (isLinkConfigured(payLink)) {
     window.location.href = payLink
@@ -735,20 +798,20 @@ function showSuccessScreen(order, isDemo) {
   var key    = order ? order.orderKey : '—';
   var demo   = isDemo
     ? '<br><br><div style="background:#fff8f0;border:1px solid #e8d5b0;padding:.8rem 1.2rem;margin-top:1rem;font-size:.65rem;color:#8a7050;line-height:1.6;">'+
-      '⚙️ <strong>Mode démonstration</strong> — les emails ne sont pas envoyés.<br>'+
-      'Configurez <strong>STRIPE_PAYMENT_LINK</strong> dans le code pour activer le vrai paiement.'+
+      '⚙️ <strong>Демонстрационный режим</strong> — письма не отправляются.<br>'+
+      'Настройте <strong>STRIPE_PAYMENT_LINK</strong> в коде, чтобы включить реальную оплату.'+
       '</div>' : '';
 
   s.innerHTML =
     '<div class="success-icon">🎌</div>'+
-    '<div class="success-title">Merci '+prenom+' !</div>'+
+    '<div class="success-title">Спасибо, '+prenom+'!</div>'+
     '<p class="success-sub">'+
-      'Votre commande <strong>'+key+'</strong> a bien été enregistrée.<br><br>'+
-      '📧 <strong>Un email de confirmation a été envoyé</strong> à <strong>'+email+'</strong><br>'+
-      '<span style="font-size:.7rem;color:#8a8580;">Expéditeur : info@progic.jp — Vérifiez vos spams si besoin.</span><br><br>'+
-      'Il contient le récapitulatif de votre commande et un message de votre concierge.<br><br>'+
-      '⏱ <strong>Votre concierge vous contactera dans les 24 heures</strong>'+
-      ' pour démarrer la préparation de votre voyage au Japon.'+
+      'Ваш заказ <strong>'+key+'</strong> успешно зарегистрирован.<br><br>'+
+      '📧 <strong>Письмо с подтверждением отправлено</strong> на адрес <strong>'+email+'</strong><br>'+
+      '<span style="font-size:.7rem;color:#8a8580;">Отправитель: info@progic.jp — при необходимости проверьте папку "Спам".</span><br><br>'+
+      'В нём вы найдёте итог вашего заказа и сообщение от вашего консьержа.<br><br>'+
+      '⏱ <strong>Ваш консьерж свяжется с вами в течение 24 часов</strong>'+
+      ', чтобы начать подготовку вашего путешествия в Японию.'+
       demo+
     '</p>';
   s.classList.add('active');
