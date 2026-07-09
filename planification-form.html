@@ -635,31 +635,25 @@ async function generatePlan() {
   document.getElementById('planOutput').style.display = 'none';
   ra.scrollIntoView({ behavior:'smooth', block:'start' });
 
-  // NOTE : le prompt est rédigé en anglais avec instruction explicite de répondre en russe.
-  // Raison : l'endpoint Worker renvoie systématiquement un refus (stop_reason "refusal",
-  // category "bio") dès que le corps de la requête contient du texte cyrillique — bug
-  // constaté côté proxy/classifieur, sans rapport avec le contenu (vérifié : un prompt
-  // français identique fonctionne normalement, un prompt anglais demandant une réponse
-  // en russe fonctionne aussi). Ce contournement produit un texte 100% russe en sortie.
   var prompt = [
-    "You are a luxury Japan travel expert. Using the information below, write a detailed,",
-    "personalized travel itinerary IN RUSSIAN LANGUAGE ONLY (all output text must be in Russian).",
-    "- Traveler: " + d.prenom,
-    "- Departure date: " + d.depDate,
-    "- Duration: " + d.duration,
-    "- Group: " + d.adults + ", " + d.children + ", age range " + d.age,
-    "- Experience with Japan: " + d.experience,
-    "- Themes: " + d.themes,
-    "- Budget: " + (d.budgetPref || 'not specified'),
+    "Ты — эксперт по элитным путешествиям в Японию для взыскательных русскоязычных клиентов.",
+    "Составь подробный индивидуальный маршрут на русском языке на основе следующих данных:",
+    "- Путешественник: " + d.prenom,
+    "- Дата отъезда: " + d.depDate,
+    "- Длительность: " + d.duration,
+    "- Группа: " + d.adults + ", " + d.children + ", возрастная категория " + d.age,
+    "- Опыт поездок в Японию: " + d.experience,
+    "- Темы: " + d.themes,
+    "- Бюджет: " + (d.budgetPref || 'не указан'),
     "",
-    "Structure your answer as:",
-    "1. A poetic title for this trip",
-    "2. Introduction (2-3 sentences)",
-    "3. Day-by-day itinerary",
-    "4. Three essential practical tips",
-    "5. A final encouraging word",
+    "Структура ответа:",
+    "1. Поэтичное название путешествия",
+    "2. Вступление (2-3 предложения)",
+    "3. Маршрут по дням",
+    "4. Три важных практических совета",
+    "5. Финальное вдохновляющее напутствие",
     "",
-    "Elegant and inspiring style. Maximum 800 words. Remember: write entirely in Russian."
+    "Изящный и вдохновляющий стиль. Максимум 800 слов. Отвечай полностью на русском языке."
   ].join('\n');
 
   try {
