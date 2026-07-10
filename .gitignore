@@ -5,3 +5,6 @@ dist/
 _old/
 # 画像はFR版リポジトリ（sato-hash/vogue-japon-toppage）が正本。RUはローカル参照＋デプロイ時コピー
 img/
+
+# Local Netlify folder
+.netlify
