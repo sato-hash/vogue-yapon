@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты — Votre Japon sur Mesure</title>
+<link rel="canonical" href="https://ru.japon.progic.jp/contact.html">
+<link rel="alternate" hreflang="ru" href="https://ru.japon.progic.jp/contact.html">
+<link rel="alternate" hreflang="fr" href="https://japon.progic.jp/contact.html">
+<link rel="alternate" hreflang="x-default" href="https://japon.progic.jp/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Votre Japon sur Mesure">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Контакты — Votre Japon sur Mesure">
+<meta property="og:description" content="Есть вопрос о вашем путешествии в Японию? Напишите нам — мы ответим лично в течение 24–48 часов.">
+<meta property="og:url" content="https://ru.japon.progic.jp/contact.html">
+<meta property="og:image" content="https://ru.japon.progic.jp/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Контакты — Votre Japon sur Mesure">
+<meta name="twitter:description" content="Есть вопрос о вашем путешествии в Японию? Напишите нам — ответим в течение 24–48 часов.">
+<meta name="twitter:image" content="https://ru.japon.progic.jp/img/og-image.jpg">
+<meta name="description" content="Есть вопрос о вашем путешествии в Японию? Напишите нам — мы ответим лично в течение 24–48 часов.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&family=Montserrat:wght@400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f9f7f3; --noir:#0c0c0c; --gold:#a8834a; --gold-lt:#c9a96e;
+  --charcoal:#2a2a2a; --ash:#7a7a7a; --sakura:#c4848c; --ink-blue:#1a2640;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--noir);font-family:'Jost',sans-serif;overflow-x:hidden;}
+
+.nav-spacer{height:58px;}
+
+/* ── HERO ── */
+.contact-hero{
+  max-width:880px;margin:0 auto;padding:5rem 8% 2.5rem;text-align:center;
+}
+.contact-hero .eyebrow{
+  font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.6rem;
+}
+.contact-hero h1{
+  font-family:'EB Garamond',Georgia,serif;font-weight:400;
+  font-size:clamp(2.4rem,6vw,3.8rem);line-height:1.08;color:var(--noir);
+  margin-bottom:1.6rem;
+}
+.contact-hero h1 em{font-style:italic;color:var(--gold);}
+.contact-hero .lede{
+  font-size:.92rem;line-height:1.9;color:var(--charcoal);max-width:560px;
+  margin:0 auto;font-weight:300;
+}
+.contact-hero .lede-jp{
+  display:block;margin-top:.8rem;font-family:'Noto Serif JP',serif;
+  font-size:.78rem;color:var(--ash);letter-spacing:.04em;
+}
+
+/* ── FORM ── */
+.contact-wrap{max-width:620px;margin:0 auto;padding:1rem 8% 6rem;}
+.contact-form{display:flex;flex-direction:column;gap:1.7rem;}
+.field-label{
+  display:block;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ash);margin-bottom:.6rem;
+}
+.field-label .req{color:var(--gold);margin-left:.2em;}
+.field-input,.field-textarea{
+  width:100%;background:#fff;border:1px solid rgba(0,0,0,.12);
+  padding:.95rem 1.1rem;font-family:'Jost',sans-serif;font-size:.9rem;color:var(--noir);
+  transition:border-color .2s,box-shadow .2s;
+}
+.field-input:focus,.field-textarea:focus{
+  outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(168,131,74,.1);
+}
+.field-textarea{resize:vertical;min-height:150px;line-height:1.7;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;}
+.field-hint{font-size:.62rem;color:var(--ash);margin-top:.45rem;letter-spacing:.02em;}
+
+.btn-send{
+  align-self:flex-start;margin-top:.4rem;
+  padding:1rem 2.6rem;background:var(--noir);border:none;cursor:pointer;
+  font-family:'Jost',sans-serif;font-size:.6rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:#fff;
+  transition:background .3s,transform .2s;
+}
+.btn-send:hover{background:var(--gold);transform:translateY(-2px);}
+.btn-send:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+/* ── STATUS ── */
+.contact-status{margin-top:2rem;display:none;}
+.contact-status.show{display:block;animation:fadeUp .4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.status-loading{display:flex;align-items:center;gap:.9rem;color:var(--charcoal);font-size:.85rem;}
+.spinner{
+  width:20px;height:20px;border:2px solid rgba(168,131,74,.25);
+  border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status-success{
+  background:#fff;border:1px solid rgba(168,131,74,.3);border-left:3px solid var(--gold);
+  padding:1.8rem 2rem;
+}
+.status-success h3{
+  font-family:'EB Garamond',serif;font-weight:400;font-size:1.5rem;color:var(--noir);
+  margin-bottom:.7rem;
+}
+.status-success p{font-size:.85rem;line-height:1.8;color:var(--charcoal);font-weight:300;}
+.status-error{
+  background:#fdf6f6;border:1px solid rgba(196,132,140,.4);border-left:3px solid var(--sakura);
+  padding:1.5rem 1.8rem;font-size:.82rem;line-height:1.7;color:var(--charcoal);
+}
+.status-error a{color:var(--gold);}
+
+/* ── REASSURANCE FOOTER ── */
+.contact-note{
+  max-width:620px;margin:0 auto;padding:0 8% 5rem;text-align:center;
+  font-size:.72rem;letter-spacing:.04em;color:var(--ash);line-height:1.9;
+}
+.contact-note a{color:var(--gold);text-decoration:none;}
+.contact-note a:hover{text-decoration:underline;}
+
+@media(max-width:600px){
+  .field-row{grid-template-columns:1fr;}
+  .contact-hero{padding-top:3.5rem;}
+}
+</style>
+</head>
+<body>
+<div class="nav-spacer"></div>
+
+<section class="contact-hero">
+  <p class="eyebrow">Контакты · お問い合わせ</p>
+  <h1>Есть вопрос?<br><em>Напишите нам.</em></h1>
+  <p class="lede">
+    Наша команда отвечает лично в течение 24–48 часов.
+    Пишите на русском языке, без стеснения — мы ответим вам на вашем языке.
+    <span class="lede-jp">どんな小さなご質問でも、お気軽にどうぞ。</span>
+  </p>
+</section>
+
+<section class="contact-wrap">
+  <form class="contact-form" id="contactForm" autocomplete="on">
+    <div class="field-row">
+      <div>
+        <label class="field-label" for="cf-prenom">Имя <span class="req">*</span></label>
+        <input class="field-input" type="text" id="cf-prenom" name="prenom" required>
+      </div>
+      <div>
+        <label class="field-label" for="cf-nom">Фамилия</label>
+        <input class="field-input" type="text" id="cf-nom" name="nom">
+      </div>
+    </div>
+
+    <div>
+      <label class="field-label" for="cf-email">Email <span class="req">*</span></label>
+      <input class="field-input" type="email" id="cf-email" name="email" required>
+      <p class="field-hint">Мы ответим вам напрямую на этот адрес.</p>
+    </div>
+
+    <div>
+      <label class="field-label" for="cf-key">Код маршрута (необязательно)</label>
+      <input class="field-input" type="text" id="cf-key" name="planKey" placeholder="VJM-2025-XXXXX">
+      <p class="field-hint">Если вы уже получили маршрут, укажите его номер.</p>
+    </div>
+
+    <div>
+      <label class="field-label" for="cf-message">Ваше сообщение <span class="req">*</span></label>
+      <textarea class="field-textarea" id="cf-message" name="message" required
+        placeholder="Задайте нам вопрос о вашем путешествии в Японию…"></textarea>
+    </div>
+
+    <button type="submit" class="btn-send" id="cfSubmit">Отправить сообщение →</button>
+  </form>
+
+  <div class="contact-status" id="contactStatus"></div>
+</section>
+
+<p class="contact-note">
+  Предпочитаете email&nbsp;? Напишите нам на <a href="mailto:info@progic.jp">info@progic.jp</a><br>
+  Votre Japon sur Mesure · あなただけの日本旅行
+</p>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   CONTACT FORM — bilingue (RU → JP automatique)
+   - Traduit le message en japonais via le proxy Claude
+   - Envoie à info@progic.jp avec le japonais ET le russe
+   ═══════════════════════════════════════════════════ */
+(function(){
+  var WORKER = "https://wild-moon-ff72japan-api-proxy.sato-9c3.workers.dev";
+  var DEST_LIST    = ["sato@progic.jp", "info@progic.jp"]; // les deux boîtes reçoivent
+  var DEST_DISPLAY = "sato@progic.jp";
+
+  var form   = document.getElementById('contactForm');
+  var statusEl = document.getElementById('contactStatus');
+  var btn    = document.getElementById('cfSubmit');
+
+  function esc(s){
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function showLoading(){
+    statusEl.className = 'contact-status show';
+    statusEl.innerHTML =
+      '<div class="status-loading"><div class="spinner"></div>'+
+      '<span>Отправка вашего сообщения…</span></div>';
+  }
+  function showSuccess(){
+    statusEl.className = 'contact-status show';
+    statusEl.innerHTML =
+      '<div class="status-success">'+
+      '<h3>Спасибо, ваше сообщение отправлено&nbsp;✦</h3>'+
+      '<p>Мы ответим вам лично в течение 24–48 часов '+
+      'на указанный вами адрес. До скорой встречи&nbsp;!</p></div>';
+  }
+  function showError(){
+    statusEl.className = 'contact-status show';
+    statusEl.innerHTML =
+      '<div class="status-error">Произошла ошибка при отправке. '+
+      'Пожалуйста, напишите нам напрямую на <a href="mailto:'+DEST_DISPLAY+'">'+DEST_DISPLAY+'</a>.</div>';
+  }
+
+  /* Traduit le texte RU → JP via le proxy Claude. Renvoie '' si échec. */
+  function translateToJP(text){
+    return fetch(WORKER, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-6",
+        max_tokens:700,
+        messages:[{role:"user", content:
+          "次のお客様からのロシア語のお問い合わせを、自然で丁寧な日本語（敬語）に翻訳してください。"+
+          "翻訳文のみを返し、コメントや引用符は付けないでください。\n\n"+text
+        }]
+      })
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      return (d && d.content && d.content[0]) ? d.content[0].text.trim() : '';
+    })
+    .catch(function(){return '';});
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var prenom  = document.getElementById('cf-prenom').value.trim();
+    var nom     = document.getElementById('cf-nom').value.trim();
+    var email   = document.getElementById('cf-email').value.trim();
+    var planKey = document.getElementById('cf-key').value.trim();
+    var message = document.getElementById('cf-message').value.trim();
+
+    if(!prenom || !email || !message){ return; }
+
+    btn.disabled = true;
+    showLoading();
+
+    translateToJP(message).then(function(jp){
+      var fullName = (prenom + ' ' + nom).trim();
+      var hasJP = jp && jp.length > 0;
+
+      /* Corps de l'email envoyé à Sato — japonais d'abord, original ensuite */
+      var body =
+        '<div style="font-family:sans-serif;line-height:1.8;color:#222;">'+
+        '<p style="font-size:12px;color:#c4848c;letter-spacing:.05em;margin:0 0 4px;">'+
+          '【ロシア語版サイトからのお問い合わせ】</p>'+
+        '<p style="font-size:13px;color:#a8834a;letter-spacing:.1em;margin:0 0 12px;">'+
+          '📨 お問い合わせ（サイト経由）</p>'+
+        '<table style="border-collapse:collapse;font-size:14px;margin-bottom:18px;">'+
+          '<tr><td style="padding:3px 14px 3px 0;color:#888;">お名前</td><td>'+esc(fullName)+'</td></tr>'+
+          '<tr><td style="padding:3px 14px 3px 0;color:#888;">返信先メール</td><td><a href="mailto:'+esc(email)+'">'+esc(email)+'</a></td></tr>'+
+          (planKey ? '<tr><td style="padding:3px 14px 3px 0;color:#888;">旅行キー</td><td>'+esc(planKey)+'</td></tr>' : '')+
+        '</table>'+
+        (hasJP
+          ? '<p style="font-size:12px;color:#888;margin:0 0 4px;">— 日本語訳 —</p>'+
+            '<p style="font-size:15px;background:#f7f3ec;padding:12px 14px;border-left:3px solid #a8834a;margin:0 0 18px;white-space:pre-wrap;">'+esc(jp)+'</p>'
+          : '<p style="font-size:12px;color:#c4848c;margin:0 0 8px;">（自動翻訳に失敗しました。原文をご確認ください）</p>')+
+        '<p style="font-size:12px;color:#888;margin:0 0 4px;">— 原文（русский）—</p>'+
+        '<p style="font-size:14px;color:#555;white-space:pre-wrap;margin:0;">'+esc(message)+'</p>'+
+        '<hr style="border:none;border-top:1px solid #eee;margin:20px 0 8px;">'+
+        '<p style="font-size:11px;color:#aaa;margin:0;">返信は「アキ」に依頼すると、日本語→ロシア語に翻訳して下書きを作成できます。</p>'+
+        '</div>';
+
+      return fetch(WORKER + '/email', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          to: DEST_LIST,        // les deux boîtes : sato@ + info@
+          replyTo: email,       // répondre directement au client
+          prenom: 'Équipe Votre Japon',
+          planKey: 'CONTACT-' + Date.now(),
+          planText: body
+        })
+      }).then(function(r){return r.json();});
+    })
+    .then(function(res){
+      if(res && res.ok){        // statut réel renvoyé par le Worker corrigé
+        showSuccess();
+      }else{
+        showError(); btn.disabled = false;
+      }
+    })
+    .catch(function(){
+      showError(); btn.disabled = false;
+    });
+  });
+})();
+</script>
+
+<script src="nav-shared.js"></script>
+</body>
+</html>

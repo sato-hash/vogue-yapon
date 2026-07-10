@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Консьерж — Votre Japon sur Mesure</title>
+<meta name="description" content="Русскоговорящий консьерж, полностью посвящённый вашему путешествию в Японию: советы эксперта, бронирования и помощь на месте. Пакеты от 10 €.">
+<link rel="canonical" href="https://ru.japon.progic.jp/concierge-payment.html">
+<link rel="alternate" hreflang="ru" href="https://ru.japon.progic.jp/concierge-payment.html">
+<link rel="alternate" hreflang="fr" href="https://japon.progic.jp/concierge-payment.html">
+<link rel="alternate" hreflang="x-default" href="https://japon.progic.jp/concierge-payment.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Votre Japon sur Mesure">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Консьерж — Votre Japon sur Mesure">
+<meta property="og:description" content="Русскоговорящий консьерж, полностью посвящённый вашему путешествию в Японию: советы эксперта, бронирования и помощь на месте. Пакеты от 10 €.">
+<meta property="og:url" content="https://ru.japon.progic.jp/concierge-payment.html">
+<meta property="og:image" content="https://ru.japon.progic.jp/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Консьерж — Votre Japon sur Mesure">
+<meta name="twitter:description" content="Русскоговорящий консьерж, полностью посвящённый вашему путешествию в Японию: советы эксперта, бронирования и помощь на месте. Пакеты от 10 €.">
+<meta name="twitter:image" content="https://ru.japon.progic.jp/img/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&family=Montserrat:wght@400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{overflow-x:hidden;background:#f5f0e8;color:#0f0e0b;font-family:'Jost',sans-serif;}
+.nav-spacer{height:58px;}
+
+/* ── HERO ── */
+.hero{display:flex;align-items:stretch;background:#0a0908;min-height:520px;}
+.hero-left{flex:0 0 42%;display:flex;flex-direction:column;justify-content:center;padding:3.5rem 3% 3.5rem 6%;background:linear-gradient(to right,#0a0908 80%,transparent);z-index:1;}
+.hero-right{flex:1;overflow:hidden;position:relative;}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;filter:brightness(.72) saturate(.85);}
+.eyebrow{display:flex;align-items:center;gap:.6rem;margin-bottom:1.1rem;}
+.eyebrow-line{width:22px;height:1px;background:#a8834a;}
+.eyebrow-text{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:#c9a96e;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,4.2rem);font-weight:300;line-height:1.05;color:#fff;margin-bottom:.9rem;}
+.hero h1 em{font-style:italic;color:#c9a96e;display:block;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:1.6rem;}
+.hero-badge-row{display:flex;gap:.7rem;flex-wrap:wrap;}
+.hero-badge{font-size:.47rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.1);padding:.38rem .8rem;}
+
+/* ── GUIDE STRIP ── */
+.guide-strip{background:#0f0e0b;padding:1.8rem 6%;display:flex;align-items:center;gap:2rem;border-top:1px solid rgba(255,255,255,.05);}
+.guide-photo-sm{width:70px;height:70px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid #a8834a;flex-shrink:0;}
+.guide-info{flex:1;}
+.guide-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;font-weight:300;}
+.guide-name em{font-style:italic;color:#c9a96e;}
+.guide-role{font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:.15rem;}
+.guide-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;color:rgba(255,255,255,.38);margin-top:.3rem;line-height:1.6;}
+
+/* ── CLIENT SUMMARY BANNER ── */
+.client-banner{display:none;background:#0f2818;border-left:3px solid #a8834a;padding:1rem 2rem;margin-bottom:1.5rem;}
+.client-banner-label{font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:#a8834a;margin-bottom:.4rem;}
+.client-banner-text{font-size:.75rem;color:rgba(255,255,255,.65);line-height:1.6;}
+
+/* ── BOOKING SECTION ── */
+.booking-section{padding:3.5rem 6% 5rem;max-width:1000px;margin:0 auto;}
+.sec-eyebrow{font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:#a8834a;margin-bottom:.5rem;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.8rem);font-weight:300;line-height:1.1;margin-bottom:.4rem;}
+.sec-title em{font-style:italic;}
+.sec-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;color:#8a8580;line-height:1.7;margin-bottom:2rem;}
+
+/* ── PLAN CODE INPUT ── */
+.plan-input-block{background:#fff;border:1px solid rgba(0,0,0,.09);padding:1.5rem 2rem;margin-bottom:2.2rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;}
+.plan-input-label{font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:#6a6460;flex-shrink:0;}
+.plan-input-field{flex:1;min-width:200px;padding:.75rem 1rem;border:1px solid rgba(0,0,0,.12);font-family:'Jost',sans-serif;font-size:.85rem;color:#0f0e0b;outline:none;transition:border-color .2s;letter-spacing:.08em;}
+.plan-input-field:focus{border-color:#a8834a;box-shadow:0 0 0 3px rgba(168,131,74,.1);}
+.plan-input-btn{padding:.75rem 1.4rem;background:#0f0e0b;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.5rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#fff;transition:background .2s;white-space:nowrap;}
+.plan-input-btn:hover{background:#a8834a;}
+.plan-badge{font-size:.6rem;color:#2a6040;background:#f0f7f3;border:1px solid rgba(42,96,64,.2);padding:.42rem .9rem;display:none;border-radius:2px;}
+.plan-badge.show{display:inline-block;}
+
+/* ── CURRENCY TOGGLE ── */
+.currency-toggle{display:inline-flex;border:1px solid rgba(0,0,0,.14);margin-bottom:1.4rem;}
+.cur-btn{padding:.55rem 1.3rem;background:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.55rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#6a6460;transition:all .2s;}
+.cur-btn+.cur-btn{border-left:1px solid rgba(0,0,0,.14);}
+.cur-btn.active{background:#a8834a;color:#fff;}
+.currency-note{font-size:.53rem;color:#b0a898;margin:.3rem 0 1.6rem;line-height:1.6;}
+
+/* ── FORMULES ACCORDION ── */
+.formules-label{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:#6a6460;padding:.6rem 0 .7rem;border-bottom:1px solid rgba(0,0,0,.07);margin-bottom:0;}
+.formule-row{border-bottom:1px solid rgba(0,0,0,.07);background:#fff;}
+.formule-header{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.5rem;cursor:pointer;transition:background .15s;user-select:none;}
+.formule-header:hover{background:#faf6ef;}
+.formule-row.open .formule-header{background:#faf6ef;}
+.formule-num{font-family:'Cormorant Garamond',serif;font-size:.75rem;color:#a8834a;letter-spacing:.2em;flex-shrink:0;width:1.6rem;}
+.formule-name{flex:1;}
+.formule-name-fr{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#0f0e0b;font-weight:300;}
+.formule-name-fr em{font-style:italic;}
+.formule-name-jp{font-family:'Noto Serif JP',serif;font-size:.62rem;color:#b0a898;letter-spacing:.14em;display:block;margin-top:.1rem;}
+.formule-price-col{text-align:right;flex-shrink:0;}
+.formule-price{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#0f0e0b;font-weight:300;line-height:1;}
+.formule-price-note{font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:#b0a898;display:block;margin-top:.1rem;}
+.formule-arrow{width:26px;height:26px;border:1px solid rgba(0,0,0,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#b0a898;flex-shrink:0;transition:all .3s;}
+.formule-row.open .formule-arrow{background:#a8834a;border-color:#a8834a;color:#fff;transform:rotate(45deg);}
+.formule-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(0.16,1,0.3,1);padding:0 1.5rem 0 4.3rem;}
+.formule-row.open .formule-body{max-height:400px;padding-bottom:1.6rem;}
+.formule-features{list-style:none;margin-bottom:1.2rem;}
+.formule-features li{font-size:.78rem;color:#4a4540;padding:.38rem 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;gap:.6rem;line-height:1.5;}
+.formule-features li::before{content:"—";color:#a8834a;flex-shrink:0;font-size:.65rem;margin-top:.15rem;}
+.btn-select-formule{display:inline-flex;align-items:center;gap:.45rem;padding:.65rem 1.5rem;font-family:'Jost',sans-serif;font-size:.52rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;background:#0f0e0b;color:#fff;border:none;cursor:pointer;transition:all .25s;}
+.btn-select-formule:hover{background:#a8834a;}
+.btn-select-formule.active{background:#2a6040;}
+.formule-row.selected-plan{border-left:3px solid #a8834a;}
+
+/* ── OPTIONS ── */
+.opt-title{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:#6a6460;padding:1.4rem 0 .7rem;border-bottom:1px solid rgba(0,0,0,.07);}
+.opt-group{background:#f5f0e8;padding:.6rem 1.5rem;font-size:.44rem;letter-spacing:.18em;text-transform:uppercase;color:#a8834a;border-bottom:1px solid rgba(0,0,0,.05);}
+.opt-row{display:flex;align-items:center;gap:1.1rem;padding:1rem 1.5rem;background:#fff;border-bottom:1px solid rgba(0,0,0,.05);cursor:pointer;transition:background .15s;border-left:3px solid transparent;}
+.opt-row:hover{background:#faf6ef;}
+.opt-row.selected{background:#faf6ef;border-left-color:#a8834a;}
+.opt-check{width:20px;height:20px;border:1px solid rgba(0,0,0,.15);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;border-radius:2px;}
+.opt-row.selected .opt-check{background:#a8834a;border-color:#a8834a;}
+.opt-check-mark{color:#fff;font-size:.62rem;display:none;}
+.opt-row.selected .opt-check-mark{display:block;}
+.opt-icon{font-size:1rem;flex-shrink:0;}
+.opt-info{flex:1;}
+.opt-name{font-size:.74rem;color:#0f0e0b;font-weight:500;}
+.opt-desc{font-size:.57rem;color:#8a8580;margin-top:.12rem;line-height:1.5;}
+.opt-price{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-weight:300;color:#0f0e0b;white-space:nowrap;flex-shrink:0;}
+.opt-price.tbd{font-size:.52rem;font-family:'Jost',sans-serif;color:#b0a898;letter-spacing:.1em;text-transform:uppercase;}
+
+/* ── SUMMARY ── */
+.summary-block{background:#fff;border:1px solid rgba(0,0,0,.08);padding:2rem;margin-top:2rem;}
+.summary-ttl{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:#6a6460;margin-bottom:1.2rem;}
+.sum-lines{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.2rem;}
+.sum-line{display:flex;justify-content:space-between;font-size:.72rem;color:#4a4540;}
+.sum-line.base-line{font-weight:500;color:#0f0e0b;}
+.sum-total{border-top:1px solid rgba(0,0,0,.1);padding-top:.9rem;display:flex;justify-content:space-between;align-items:baseline;}
+.sum-total-label{font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:#6a6460;}
+.sum-total-amt{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;}
+.sum-note{font-size:.53rem;color:#b0a898;margin-top:.7rem;line-height:1.6;}
+
+/* ── CONTACT / PAYMENT ── */
+.contact-block{background:#fff;border:1px solid rgba(0,0,0,.08);padding:1.8rem 2rem;margin-top:1px;}
+.contact-ttl{font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#6a6460;margin-bottom:1.2rem;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.field-group{margin-bottom:1rem;}
+.field-label{display:block;font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:#6a6460;margin-bottom:.45rem;}
+.req{color:#c9607a;}
+.field-input{width:100%;padding:.8rem 1rem;border:1px solid rgba(0,0,0,.12);font-family:'Jost',sans-serif;font-size:.85rem;color:#0f0e0b;outline:none;transition:border-color .2s;border-radius:0;}
+.field-input:focus{border-color:#a8834a;box-shadow:0 0 0 3px rgba(168,131,74,.1);}
+#stripe-card-element{padding:.85rem 1rem;border:1px solid rgba(0,0,0,.12);transition:border-color .2s;}
+#stripe-error{color:#c9607a;font-size:.6rem;margin-top:.4rem;min-height:.9rem;}
+.btn-pay{width:100%;padding:1.15rem;background:#a8834a;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#fff;transition:all .3s;margin-top:1.5rem;}
+.btn-pay:hover:not(:disabled){background:#7a5f32;transform:translateY(-2px);box-shadow:0 8px 24px rgba(168,131,74,.3);}
+.btn-pay:disabled{background:#b0a898;cursor:not-allowed;}
+.pay-secure{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.8rem;}
+.pay-secure span{font-size:.5rem;color:#b0a898;}
+
+/* ── SUCCESS ── */
+.success-block{display:none;text-align:center;padding:4rem 2rem;background:#fff;border:1px solid rgba(0,0,0,.07);margin-top:2rem;}
+.success-block.active{display:block;animation:fadeUp .5s ease;}
+.success-icon{font-size:3rem;margin-bottom:1rem;}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:.6rem;}
+.success-sub{font-size:.68rem;color:#6a6460;line-height:1.8;max-width:460px;margin:0 auto;}
+
+/* ── PROCESS ── */
+.process-section{padding:4rem 6%;background:#0f0e0b;}
+.proc-eyebrow{font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:#a8834a;text-align:center;margin-bottom:.5rem;}
+.proc-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:300;color:#fff;text-align:center;margin-bottom:3rem;}
+.proc-title em{font-style:italic;}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);max-width:1000px;margin:0 auto;}
+.proc-step{background:#0f0e0b;padding:2rem 1.6rem;position:relative;}
+.proc-step::after{content:'→';position:absolute;right:-1px;top:2rem;color:rgba(255,255,255,.12);font-size:1.1rem;z-index:1;}
+.proc-step:last-child::after{display:none;}
+.proc-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(255,255,255,.05);line-height:1;margin-bottom:.6rem;}
+.proc-icon{font-size:1.3rem;margin-bottom:.6rem;}
+.proc-name{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff;font-weight:300;margin-bottom:.4rem;}
+.proc-desc{font-size:.58rem;color:rgba(255,255,255,.3);line-height:1.7;}
+.proc-time{display:inline-block;margin-top:.7rem;font-size:.43rem;letter-spacing:.14em;text-transform:uppercase;color:#a8834a;border:1px solid rgba(168,131,74,.3);padding:.28rem .7rem;}
+
+/* ── FOOTER ── */
+.mini-footer{background:#0f0e0b;border-top:1px solid rgba(255,255,255,.06);padding:1.6rem 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.mf-logo{font-family:'Cormorant Garamond',serif;font-size:.92rem;color:#fff;text-decoration:none;}
+.mf-logo em{font-style:italic;color:#a8834a;}
+.mf-links{display:flex;gap:1.4rem;}
+.mf-links a{font-size:.52rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s;}
+.mf-links a:hover{color:#c9a96e;}
+.mf-copy{font-size:.5rem;color:rgba(255,255,255,.15);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:900px){
+  .hero{flex-direction:column;min-height:auto;}
+  .hero-left{flex:none;padding:3rem 6%;}
+  .hero-right{height:280px;}
+  .proc-grid{grid-template-columns:1fr 1fr;}
+  .field-row{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  .proc-grid{grid-template-columns:1fr;}
+  .plan-input-block{flex-direction:column;align-items:stretch;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV (shared script) -->
+<script src="nav-shared.js"></script>
+<div class="nav-spacer"></div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">Консьерж · Персональный сервис</span>
+    </div>
+    <h1>Добро пожаловать в страну<em>бесконечных открытий!</em></h1>
+    <p class="hero-sub">Мы сделаем ваше путешествие в Японию более безопасным и насыщенным.</p>
+    <div class="hero-badge-row">
+      <span class="hero-badge">✦ Советы экспертов</span>
+      <span class="hero-badge">✦ Помощь в Японии</span>
+      <span class="hero-badge">✦ От €10</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="img/embedded/emb-3e94e2fa9a.jpg" alt="Ваш консьерж в Японии">
+  </div>
+</section>
+
+<!-- GUIDE STRIP -->
+<div class="guide-strip">
+  <img class="guide-photo-sm" src="img/embedded/emb-996d6fe042.png" alt="Русскоговорящий гид">
+  <div class="guide-info">
+    <div class="guide-name">Ваш гид — <em>наши местные гиды</em></div>
+    <div class="guide-role">Русскоговорящие гиды · живут в Японии · эксперты на месте</div>
+    <div class="guide-quote">«Откройте для себя настоящую Японию — далеко за пределами привычных туристических маршрутов».</div>
+  </div>
+</div>
+
+<!-- BOOKING SECTION -->
+<div class="booking-section" id="booking">
+  <p class="sec-eyebrow">Бронирование · Ваш заказ</p>
+  <h2 class="sec-title">Выберите ваше <em>сопровождение</em></h2>
+  <p class="sec-sub">Введите код вашего ИИ-плана, выберите базовый пакет и добавьте нужные услуги. Ваш консьерж изучит ваш маршрут прежде чем связаться с вами.</p>
+
+  <!-- ① PLAN CODE -->
+  <div class="plan-input-block">
+    <span class="plan-input-label">① Код ИИ-плана</span>
+    <input type="text" class="plan-input-field" id="plan-number" placeholder="Напр.: VJM-2026-XXXXX" maxlength="20">
+    <button class="plan-input-btn" onclick="loadPlan()">Загрузить мой план →</button>
+    <span class="plan-badge" id="plan-badge"></span>
+  </div>
+
+  <!-- CLIENT SUMMARY BANNER -->
+  <div class="client-banner" id="client-summary-banner">
+    <div class="client-banner-label">✦ Данные вашего плана получены</div>
+    <div class="client-banner-text" id="cs-text"></div>
+  </div>
+
+  <!-- CURRENCY TOGGLE -->
+  <div class="currency-toggle" role="group" aria-label="Валюта">
+    <button type="button" data-cur="eur" class="cur-btn active" onclick="setCurrency('eur')">EUR €</button>
+    <button type="button" data-cur="usd" class="cur-btn" onclick="setCurrency('usd')">USD $</button>
+  </div>
+  <p class="currency-note">Цены в USD указаны по справочному курсу и периодически пересматриваются (не в реальном времени).</p>
+
+  <!-- ② FORMULES DE BASE (accordion) -->
+  <div class="formules-label">② Базовый пакет — нажмите, чтобы увидеть подробности</div>
+
+  <!-- Formule 01 -->
+  <div class="formule-row" id="fr1" onclick="toggleFormule('fr1')">
+    <div class="formule-header">
+      <span class="formule-num">01</span>
+      <div class="formule-name">
+        <div class="formule-name-fr">Стартовый <em>пакет</em></div>
+        <span class="formule-name-jp">導入プラン</span>
+      </div>
+      <div class="formule-price-col">
+        <div class="formule-price" data-key="10">€ 10</div>
+        <span class="formule-price-note">за поездку</span>
+      </div>
+      <div class="formule-arrow">+</div>
+    </div>
+    <div class="formule-body">
+      <ul class="formule-features">
+        <li>Персональная консультация с экспертом по Японии — маршрут, транспорт, проживание, культурные советы</li>
+        <li>Проверка вашего ИИ-плана: логистические поправки и эксклюзивные дополнения</li>
+        <li>Бесплатная телефонная поддержка на русском языке на протяжении всего пребывания в Японии</li>
+      </ul>
+      <button class="btn-select-formule" data-formule="Стартовый пакет" data-price="10" onclick="selectFormule(this,event)">Выбрать этот пакет</button>
+    </div>
+  </div>
+
+  <!-- Formule 02 -->
+  <div class="formule-row" id="fr2" onclick="toggleFormule('fr2')">
+    <div class="formule-header">
+      <span class="formule-num">02</span>
+      <div class="formule-name">
+        <div class="formule-name-fr">Гид на день — <em>регион Токио</em></div>
+        <span class="formule-name-jp">首都圏１日ガイド</span>
+      </div>
+      <div class="formule-price-col">
+        <div class="formule-price" data-key="150">€ 150</div>
+        <span class="formule-price-note">за день</span>
+      </div>
+      <div class="formule-arrow">+</div>
+    </div>
+    <div class="formule-body">
+      <ul class="formule-features">
+        <li>Русскоговорящий гид на весь день в регионе Токио (Асакуса, Сибуя, Никко, Камакура, Йокогама…)</li>
+        <li>Маршрут, составленный по вашим пожеланиям — культура, гастрономия, шопинг, природа</li>
+        <li>Заказ возможен заранее или сразу по прибытии в Японию</li>
+      </ul>
+      <button class="btn-select-formule" data-formule="Гид на день — регион Токио" data-price="150" onclick="selectFormule(this,event)">Выбрать этот пакет</button>
+    </div>
+  </div>
+
+  <!-- Formule 03 -->
+  <div class="formule-row" id="fr3" onclick="toggleFormule('fr3')">
+    <div class="formule-header">
+      <span class="formule-num">03</span>
+      <div class="formule-name">
+        <div class="formule-name-fr">Полный <em>пакет</em></div>
+        <span class="formule-name-jp">完全パッケージ · 最もコンプリート</span>
+      </div>
+      <div class="formule-price-col">
+        <div class="formule-price" data-key="500">€ 500</div>
+        <span class="formule-price-note">за поездку</span>
+      </div>
+      <div class="formule-arrow">+</div>
+    </div>
+    <div class="formule-body">
+      <ul class="formule-features">
+        <li>Персональная встреча в аэропорту Ханэда или Нарита вашим консьержем</li>
+        <li>Бронирование отеля на первую ночь и частный трансфер аэропорт → отель включены</li>
+        <li>Рекомендация и бронирование японского ресторана на первый вечер</li>
+        <li>Организация 5 предварительных бронирований (рестораны, мероприятия, храмы, музеи…)</li>
+      </ul>
+      <button class="btn-select-formule" data-formule="Полный пакет — прибытие и встреча" data-price="500" onclick="selectFormule(this,event)">Выбрать этот пакет</button>
+    </div>
+  </div>
+
+  <!-- ③ OPTIONS -->
+  <div class="opt-title">③ &nbsp;Дополнительные услуги — добавьте те, что вас интересуют</div>
+
+  <div class="opt-group">🛬 &nbsp;Встреча в аэропорту</div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Встреча в аэропорту (Ханэда или Нарита)" data-tbd="1">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">👋</div>
+    <div class="opt-info"><div class="opt-name">Встреча в аэропорту</div><div class="opt-desc">Ханэда или Нарита — консьерж встретит вас по прибытии</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
+  </div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Частный трансфер аэропорт ↔ отель" data-tbd="1">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">🚗</div>
+    <div class="opt-info"><div class="opt-name">Частный трансфер аэропорт ↔ отель</div><div class="opt-desc">Частный автомобиль с водителем — в одну сторону или туда-обратно</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
+  </div>
+
+  <div class="opt-group">📋 &nbsp;Предварительные бронирования</div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="15" data-name="Предварительное бронирование — 1 услуга">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">📌</div>
+    <div class="opt-info"><div class="opt-name">Предварительное бронирование — 1 услуга</div><div class="opt-desc">Музей, мастер-класс, дзен-храм, частный онсэн, шоу…</div></div>
+    <div class="opt-price">€ 15</div>
+  </div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="50" data-name="Пакет из 5 предварительных бронирований">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">✦</div>
+    <div class="opt-info"><div class="opt-name">Пакет из 5 предварительных бронирований</div><div class="opt-desc">Рёкан, известные рестораны, ремесленные мастерские… — экономия €25</div></div>
+    <div class="opt-price">€ 50</div>
+  </div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Бронирование отеля / рёкана" data-tbd="1">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">🏨</div>
+    <div class="opt-info"><div class="opt-name">Бронирование отеля / рёкана</div><div class="opt-desc">Отели, рёканы, традиционные гостиницы — по индивидуальной смете</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
+  </div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Бронирование поезда / синкансэна" data-tbd="1">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">🚄</div>
+    <div class="opt-info"><div class="opt-name">Бронирование поезда / синкансэна</div><div class="opt-desc">Билеты на синкансэн, экспресс-поезда, автобусы дальнего следования</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
+  </div>
+
+  <div class="opt-group">🍜 &nbsp;Гастрономический гид</div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="50" data-name="Сопровождение в японский ресторан">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">🍣</div>
+    <div class="opt-info"><div class="opt-name">Сопровождение в японский ресторан</div><div class="opt-desc">Подбор, бронирование и советы по аутентичному ресторану (кайсэки, идзакая, суши…)</div></div>
+    <div class="opt-price">€ 50</div>
+  </div>
+
+  <div class="opt-group">🆘 &nbsp;Экстренная помощь и медицинская поддержка</div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Помощь в медицинской экстренной ситуации" data-tbd="1">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">🏥</div>
+    <div class="opt-info"><div class="opt-name">Помощь в медицинской экстренной ситуации</div><div class="opt-desc">Координация с больницей, медицинский перевод, дистанционное сопровождение — по смете</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
+  </div>
+  <div class="opt-row" onclick="toggleOpt(this)" data-price="0" data-name="Экстренный выезд на место" data-tbd="1">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">🚨</div>
+    <div class="opt-info"><div class="opt-name">Экстренный выезд на место</div><div class="opt-desc">Личный выезд консьержа в случае серьёзной чрезвычайной ситуации</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
+  </div>
+
+  <div class="opt-group">🗺️ &nbsp;Русскоговорящий частный гид</div>
+  <div class="opt-row" onclick="toggleOpt(this, 'guide')" data-price="0" data-name="Индивидуальная программа с гидом" data-tbd="1" data-group="guide">
+    <div class="opt-check"><span class="opt-check-mark">✓</span></div>
+    <div class="opt-icon">📍</div>
+    <div class="opt-info"><div class="opt-name">Индивидуальная программа с гидом</div><div class="opt-desc">Регион за пределами Токио или программа на несколько дней — тариф согласовывается с консьержем</div></div>
+    <div class="opt-price tbd">Цена уточняется</div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary-block">
+    <div class="summary-ttl">Итог вашего заказа</div>
+    <div class="sum-lines" id="sum-lines">
+      <div class="sum-line" id="sum-base-line" style="display:none;"><span id="sum-base-name">—</span><span id="sum-base-price">—</span></div>
+    </div>
+    <div class="sum-total">
+      <span class="sum-total-label">Итого</span>
+      <span class="sum-total-amt" id="total-display">— Выберите пакет</span>
+    </div>
+    <p class="sum-note">* Онлайн-оплата касается только <strong>базового пакета</strong>. Выбранные опции (в том числе «Цена уточняется») подтверждаются и оплачиваются отдельно через консьержа в течение 24 часов после вашего заказа.</p>
+  </div>
+
+  <!-- CONTACT & PAYMENT -->
+  <div class="contact-block" id="payment-block">
+    <div class="contact-ttl">Ваши контактные данные и оплата</div>
+    <div class="field-row">
+      <div class="field-group" style="margin:0">
+        <label class="field-label">Имя <span class="req">*</span></label>
+        <input type="text" class="field-input" id="pay-prenom" placeholder="Мария">
+      </div>
+      <div class="field-group" style="margin:0">
+        <label class="field-label">Фамилия</label>
+        <input type="text" class="field-input" id="pay-nom" placeholder="Иванова">
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Email <span class="req">*</span></label>
+      <input type="email" class="field-input" id="pay-email" placeholder="maria.ivanova@email.com">
+    </div>
+    <div class="field-group">
+      <label class="field-label">Телефон / WhatsApp</label>
+      <input type="tel" class="field-input" id="pay-tel" placeholder="+7 900 000 00 00">
+    </div>
+    <div class="field-group" style="margin-bottom:0">
+      <label class="field-label">Банковская карта <span class="req">*</span></label>
+      <div id="stripe-card-element"></div>
+      <div id="stripe-error"></div>
+    </div>
+    <button class="btn-pay" id="btn-pay" onclick="submitPayment()">
+      🔒 Подтвердить и оплатить — <span id="btn-total">выберите пакет</span>
+    </button>
+    <div class="pay-secure">
+      <span>🔒 Оплата на 100% защищена Stripe · Данные шифруются по SSL</span>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-block" id="success-block">
+    <div class="success-icon">🎌</div>
+    <div class="success-title">Спасибо — ваше путешествие начинается здесь!</div>
+    <p class="success-sub">Ваш заказ зарегистрирован. Ваш консьерж свяжется с вами по электронной почте в течение 24 часов, чтобы подтвердить выбор и начать подготовку вашего путешествия.<br><br>Готовьтесь открыть Японию по-новому.</p>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="proc-eyebrow">Как мы работаем · Наш процесс</div>
+  <h2 class="proc-title">От заказа <em>до вашего вылета</em></h2>
+  <div class="proc-grid">
+    <div class="proc-step">
+      <div class="proc-num">01</div><div class="proc-icon">💳</div>
+      <div class="proc-name">Вы делаете заказ</div>
+      <div class="proc-desc">Введите код вашего ИИ-плана, выберите пакет и оплатите онлайн. Номер вашего плана сохраняется автоматически.</div>
+      <div class="proc-time">Мгновенно</div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">02</div><div class="proc-icon">📞</div>
+      <div class="proc-name">Установление контакта</div>
+      <div class="proc-desc">Ваш консьерж свяжется с вами в течение 24 часов по email и WhatsApp для ознакомительной беседы и изучит ваш ИИ-план.</div>
+      <div class="proc-time">В течение 24 ч</div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">03</div><div class="proc-icon">✍️</div>
+      <div class="proc-name">Подготовка</div>
+      <div class="proc-desc">Ваш маршрут уточняется, бронирования оформляются, полная программа передаётся вам до отъезда.</div>
+      <div class="proc-time">3–5 дней</div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">04</div><div class="proc-icon">✈️</div>
+      <div class="proc-name">Вы путешествуете</div>
+      <div class="proc-desc">Всё готово. Ваш консьерж остаётся на связи по телефону на протяжении всего вашего пребывания в Японии.</div>
+      <div class="proc-time">Во время поездки</div>
+    </div>
+  </div>
+</section>
+
+<footer class="mini-footer">
+  <a href="vogue-japon-toppage.html" class="mf-logo"><em>Votre</em> Japon sur Mesure</a>
+  <div class="mf-links">
+    <a href="vogue-japon-toppage.html">Главная</a>
+    <a href="four-seasons-journey.html">4 сезона</a>
+    <a href="planification-form.html">Планирование</a>
+    <a href="taiken-japon.html">Впечатления</a>
+  </div>
+  <span class="mf-copy">© 2025 Votre Japon sur Mesure</span>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   CONFIGURATION — À remplir par l'équipe
+   ══════════════════════════════════════════════════════════ */
+
+// ① STRIPE PAYMENT LINKS — un lien LIVE par formule de base, par devise (EUR / USD)
+//   → stripe.com (mode LIVE) → Payment Links → créer un lien par formule,
+//     puis remplacer chaque « REMPLACER… » par l'URL réelle (https://buy.stripe.com/...).
+var STRIPE_PAYMENT_LINKS = {
+  eur: {
+    '10' : 'https://buy.stripe.com/3cIcN6aRE7ez26FgzW3oA00',  // Стартовый пакет — €10
+    '150': 'https://buy.stripe.com/9B64gA2l88iD8v3cjG3oA01',  // Гид на день — регион Токио — €150
+    '500': 'https://buy.stripe.com/5kQbJ2bVIfL57qZ4Re3oA02'   // Полный пакет — €500
+  },
+  usd: {
+    '11' : 'REMPLACER_USD_11',   // à configurer — $11
+    '165': 'REMPLACER_USD_165',  // à configurer — $165
+    '550': 'REMPLACER_USD_550'   // à configurer — $550
+  }
+};
+var CURRENCY       = 'eur';                                       // devise par défaut
+var USD_FROM_EUR    = { '10':'11', '150':'165', '500':'550' };
+var PRICE_LABEL      = {
+  eur: { '10':'€ 10', '150':'€ 150', '500':'€ 500' },
+  usd: { '10':'$ 11', '150':'$ 165', '500':'$ 550' }
+};
+function getPaymentLink() {
+  if (CURRENCY === 'usd') { return STRIPE_PAYMENT_LINKS.usd[USD_FROM_EUR[String(BASE)]] || ''; }
+  return STRIPE_PAYMENT_LINKS.eur[String(BASE)] || '';
+}
+function isLinkConfigured(u) { return !!u && u.indexOf('buy.stripe.com') !== -1 && u.indexOf('REMPLACER') === -1; }
+function anyLinkConfigured() { return Object.keys(STRIPE_PAYMENT_LINKS.eur).some(function(k){ return isLinkConfigured(STRIPE_PAYMENT_LINKS.eur[k]); }); }
+
+/* ── Bascule de devise (EUR / USD) ── */
+function setCurrency(cur) {
+  if (cur !== 'eur' && cur !== 'usd') return;
+  CURRENCY = cur;
+  document.querySelectorAll('.cur-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.cur === cur); });
+  document.querySelectorAll('.formule-price[data-key]').forEach(function(el){
+    var key = el.dataset.key;
+    el.textContent = (PRICE_LABEL[cur] && PRICE_LABEL[cur][key]) || el.textContent;
+  });
+  renderSummary();
+}
+
+// ② PHP BACKEND
+// → Mettre order-handler.php dans le même dossier sur votre serveur
+var PHP_BACKEND_URL = 'order-handler.php';
+// Si dans un sous-dossier : './api/order-handler.php'
+
+/* ══════════════════════════════════════════════════════════ */
+
+window.addEventListener('load', function(){
+  initPaymentUI();
+  setHeroHeight();
+  var params = new URLSearchParams(window.location.search);
+  var planParam = params.get('plan');
+  if (planParam) { var inp = document.getElementById('plan-number'); if(inp){ inp.value=planParam; loadPlan(); } }
+  if (params.get('success') === '1') handleStripeSuccess(params.get('order') || '');
+});
+
+function initPaymentUI() {
+  var cardEl = document.getElementById('stripe-card-element');
+  if (!cardEl) return;
+  if (anyLinkConfigured()) {
+    cardEl.closest('.field-group').style.display = 'none';
+    document.getElementById('stripe-error').style.display = 'none';
+    var btn = document.getElementById('btn-pay');
+    btn.innerHTML = '🔒 Перейти к безопасной оплате — <span id="btn-total">выберите пакет</span>';
+  } else {
+    cardEl.innerHTML = '<div style="padding:.85rem 1rem;border:1px solid rgba(0,0,0,.12);font-size:.72rem;color:#8a8580;font-family:Jost,sans-serif;line-height:1.7;">⚙️ <strong>Демонстрационный режим</strong><br>Настройте <strong>STRIPE_PAYMENT_LINK</strong> в коде, чтобы включить реальную оплату картой.</div>';
+  }
+}
+
+/* ── Accordion formules ── */
+function toggleFormule(id) {
+  var row = document.getElementById(id); if (!row) return;
+  var isOpen = row.classList.contains('open');
+  document.querySelectorAll('.formule-row').forEach(function(r){ r.classList.remove('open'); });
+  if (!isOpen) row.classList.add('open');
+}
+
+/* ── Select formule ── */
+var BASE = 0, BASE_NAME = '';
+function selectFormule(btn, e) {
+  e.stopPropagation();
+  BASE = parseFloat(btn.dataset.price) || 0;
+  BASE_NAME = btn.dataset.formule;
+  document.querySelectorAll('.btn-select-formule').forEach(function(b){ b.classList.remove('active'); b.textContent = 'Выбрать этот пакет'; });
+  btn.classList.add('active'); btn.textContent = '✓ Пакет выбран';
+  document.querySelectorAll('.formule-row').forEach(function(r){ r.classList.remove('selected-plan'); });
+  btn.closest('.formule-row').classList.add('selected-plan');
+  renderSummary();
+}
+
+/* ── Load plan from storage ── */
+async function loadPlan() {
+  var n = document.getElementById('plan-number').value.trim().toUpperCase();
+  if (!n) { alert('Пожалуйста, введите номер вашего плана.'); return; }
+  var b = document.getElementById('plan-badge');
+  try {
+    var result = await window.storage.get('vjm_plan_' + n, true);
+    if (result && result.value) {
+      var plan = JSON.parse(result.value); var c = plan.client || {};
+      if (c.prenom) { var pf = document.getElementById('pay-prenom'); if(pf) pf.value=c.prenom; }
+      if (c.email)  { var ef = document.getElementById('pay-email');  if(ef) ef.value=c.email; }
+      var summary = [
+        c.prenom?'👤 '+c.prenom:'', c.depDate?'📅 '+c.depDate:'',
+        c.duration?'⏱ '+c.duration:'', c.areas?'📍 '+c.areas:'', c.themes?'✦ '+c.themes:''
+      ].filter(Boolean).join('  ·  ');
+      var banner = document.getElementById('client-summary-banner');
+      if (banner) { banner.style.display='block'; document.getElementById('cs-text').textContent=summary; }
+      b.textContent='✓ План '+n+' загружен — данные получены'; b.classList.add('show');
+      b.style.background='#e8f4ee'; b.style.color='#2a6040';
+      window._loadedPlanKey=n; window._loadedPlanData=plan;
+    } else {
+      b.textContent='✓ План '+n+' сохранён'; b.classList.add('show');
+      window._loadedPlanKey=n; window._loadedPlanData=null;
+    }
+  } catch(e) { b.textContent='✓ План '+n+' сохранён'; b.classList.add('show'); window._loadedPlanKey=n; }
+}
+
+/* ── Toggle options ── */
+function toggleOpt(el, group) {
+  if (group) document.querySelectorAll('[data-group="'+group+'"]').forEach(function(r){ if(r!==el) r.classList.remove('selected'); });
+  el.classList.toggle('selected'); renderSummary();
+}
+
+/* ── Render summary ──
+   Note : seule la formule de base dispose d'un tarif USD (PRICE_LABEL).
+   Les options n'ont pas de tarif USD dédié — elles restent affichées en EUR
+   (elles sont de toute façon facturées séparément par le concierge). */
+function renderSummary() {
+  var rows = document.querySelectorAll('.opt-row.selected');
+  var total = BASE, hasTbd = false, html = '';
+  var baseLabel = (BASE_NAME && PRICE_LABEL[CURRENCY] && PRICE_LABEL[CURRENCY][String(BASE)]) || ('€ '+BASE);
+  if (BASE_NAME) html += '<div class="sum-line base-line"><span>'+BASE_NAME+'</span><span>'+baseLabel+'</span></div>';
+  rows.forEach(function(r){
+    if (r.dataset.tbd==='1') { hasTbd=true; html+='<div class="sum-line"><span>'+r.dataset.name+'</span><span style="font-size:.55rem;color:#b0a898;">Уточняется</span></div>'; }
+    else { total+=parseFloat(r.dataset.price)||0; html+='<div class="sum-line"><span>'+r.dataset.name+'</span><span>€ '+r.dataset.price+'</span></div>'; }
+  });
+  if (!html) html='<div class="sum-line" style="color:#b0a898;font-style:italic;font-size:.7rem;">Выберите пакет выше, чтобы начать.</div>';
+  document.getElementById('sum-lines').innerHTML = html;
+  // Le total combiné (pack de base + options) reste calculé en EUR — c'est aussi le
+  // montant réellement débité en ligne (formule de base seule, options facturées à part).
+  var t = BASE_NAME ? ('€ '+total+(hasTbd?' +':'')) : '— Выберите пакет';
+  document.getElementById('total-display').textContent = t;
+  var bt = document.getElementById('btn-total');
+  if(bt) bt.textContent = BASE_NAME ? (baseLabel+(hasTbd?' + опции':'')) : 'выберите пакет';
+}
+
+/* ══════════════════════════════════════════════════════════
+   SUBMIT PAYMENT
+   ══════════════════════════════════════════════════════════ */
+async function submitPayment() {
+  if (!BASE_NAME) { alert('Пожалуйста, выберите пакет (шаг ②).'); return; }
+  var prenom = document.getElementById('pay-prenom').value.trim();
+  var nom    = document.getElementById('pay-nom').value.trim();
+  var email  = document.getElementById('pay-email').value.trim();
+  var tel    = document.getElementById('pay-tel').value.trim();
+  if (!prenom || !email) { alert('Пожалуйста, укажите ваше имя и email.'); return; }
+
+  // Note : les liens USD ne sont pas encore configurés (placeholders "REMPLACER_USD_…").
+  // Si l'utilisateur a choisi USD sans lien valide, on l'avertit plutôt que de lancer
+  // silencieusement le mode démo — l'EUR reste toujours fonctionnel.
+  if (CURRENCY === 'usd' && !isLinkConfigured(getPaymentLink())) {
+    alert('Оплата в USD скоро будет доступна. Пожалуйста, выберите EUR € для оплаты сейчас.');
+    return;
+  }
+
+  var btn = document.getElementById('btn-pay');
+  btn.disabled = true; btn.textContent = '⏳ Сохранение…';
+
+  var rows = document.querySelectorAll('.opt-row.selected');
+  var total = BASE, hasTbd = false, optionsList = [];
+  rows.forEach(function(r){
+    if (r.dataset.tbd==='1') { hasTbd=true; optionsList.push(r.dataset.name+' (уточняется)'); }
+    else { total+=parseFloat(r.dataset.price)||0; optionsList.push(r.dataset.name+' — €'+r.dataset.price); }
+  });
+
+  var orderKey = 'VJM-'+new Date().getFullYear()+'-'+Math.random().toString(36).substr(2,6).toUpperCase();
+  var now = new Date();
+  var dateStr = now.toLocaleDateString('ru-RU')+' в '+now.toLocaleTimeString('ru-RU');
+
+  var order = {
+    orderKey   : orderKey,
+    date       : dateStr,
+    statut     : 'pending',
+    prenom     : prenom,
+    nom        : nom,
+    email      : email,
+    telephone  : tel,
+    planKey    : window._loadedPlanKey || 'DIRECT',
+    formule    : BASE_NAME,
+    devise     : CURRENCY,
+    options    : optionsList.join(' | '),
+    total      : total,
+    hasTbd     : hasTbd ? 'Oui' : 'Non'
+  };
+
+  // ① Notification de la commande à l'équipe via le Worker (email → sato@ + info@)
+  var WORKER_EMAIL = 'https://wild-moon-ff72japan-api-proxy.sato-9c3.workers.dev/email';
+  var optsHtml = optionsList.length
+    ? optionsList.map(function(o){ return '<li>'+o+'</li>'; }).join('')
+    : '<li>—</li>';
+  var curSymbol   = CURRENCY === 'usd' ? '$' : '€';
+  var baseAmount  = (PRICE_LABEL[CURRENCY] && PRICE_LABEL[CURRENCY][String(BASE)]) || (curSymbol+BASE);
+  var orderBody =
+    '<div style="font-family:sans-serif;line-height:1.8;color:#222;">'+
+    '<p style="font-size:13px;color:#a8834a;letter-spacing:.1em;margin:0 0 12px;">🧳 【ロシア語版サイトからの注文】新規コンシェルジュ注文（サイト経由）</p>'+
+    '<table style="border-collapse:collapse;font-size:14px;margin-bottom:14px;">'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">注文番号</td><td>'+order.orderKey+'</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">日時</td><td>'+order.date+'</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">お名前</td><td>'+(order.prenom+' '+order.nom).trim()+'</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">返信先メール</td><td><a href="mailto:'+order.email+'">'+order.email+'</a></td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">電話</td><td>'+(order.telephone||'—')+'</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">プランキー</td><td>'+order.planKey+'</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">通貨</td><td>'+order.devise.toUpperCase()+'</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">基本プラン</td><td>'+order.formule+'（'+baseAmount+'）</td></tr>'+
+      '<tr><td style="padding:3px 14px 3px 0;color:#888;">合計（目安・EUR基準）</td><td>€'+order.total+(hasTbd?' +（要見積りあり）':'')+'</td></tr>'+
+    '</table>'+
+    '<p style="font-size:12px;color:#888;margin:0 0 4px;">オプション</p>'+
+    '<ul style="font-size:14px;color:#555;margin:0 0 10px;padding-left:18px;">'+optsHtml+'</ul>'+
+    '<hr style="border:none;border-top:1px solid #eee;margin:16px 0 8px;">'+
+    '<p style="font-size:11px;color:#aaa;margin:0;">※ オンライン決済は基本プラン分。オプションは別途見積り・請求。支払い確定はStripe側でご確認ください。</p>'+
+    '</div>';
+  try {
+    await fetch(WORKER_EMAIL, {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify({
+        to      : ['sato@progic.jp', 'info@progic.jp'],
+        replyTo : order.email,
+        prenom  : 'Équipe Votre Japon',
+        planKey : 'COMMANDE-' + order.orderKey,
+        planText: orderBody
+      })
+    });
+  } catch(e) {
+    console.warn('[commande email] échec :', e);
+    // On continue quand même vers Stripe
+  }
+
+  // ② Sauvegarde locale backup
+  try {
+    await window.storage.set('vjm_order_'+orderKey, JSON.stringify(order), true);
+  } catch(e) {}
+
+  // ③ Stripe Payment Link (selon la formule et la devise) ou mode démo
+  var payLink = getPaymentLink();
+  if (isLinkConfigured(payLink)) {
+    window.location.href = payLink
+      + '?prefilled_email=' + encodeURIComponent(email)
+      + '&client_reference_id=' + encodeURIComponent(orderKey);
+  } else {
+    // Mode démonstration
+    setTimeout(function(){
+      order.statut = 'paid_demo';
+      showSuccessScreen(order, true);
+    }, 1200);
+  }
+}
+
+/* ── Retour Stripe après paiement confirmé ── */
+async function handleStripeSuccess(orderKey) {
+  var order = null;
+  try {
+    var r = await window.storage.get('vjm_order_'+orderKey, true);
+    if (r && r.value) {
+      order = JSON.parse(r.value);
+      order.statut = 'PAYÉ ✓';
+      // Notifier PHP du paiement confirmé
+      fetch(PHP_BACKEND_URL, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(order)
+      }).catch(function(){});
+    }
+  } catch(e){}
+  showSuccessScreen(order, false);
+}
+
+/* ── Écran de succès ── */
+function showSuccessScreen(order, isDemo) {
+  document.getElementById('payment-block').style.display = 'none';
+  var s = document.getElementById('success-block');
+  var prenom = order ? order.prenom : '';
+  var email  = order ? order.email  : '';
+  var key    = order ? order.orderKey : '—';
+  var demo   = isDemo
+    ? '<br><br><div style="background:#fff8f0;border:1px solid #e8d5b0;padding:.8rem 1.2rem;margin-top:1rem;font-size:.65rem;color:#8a7050;line-height:1.6;">'+
+      '⚙️ <strong>Демонстрационный режим</strong> — письма не отправляются.<br>'+
+      'Настройте <strong>STRIPE_PAYMENT_LINK</strong> в коде, чтобы включить реальную оплату.'+
+      '</div>' : '';
+
+  s.innerHTML =
+    '<div class="success-icon">🎌</div>'+
+    '<div class="success-title">Спасибо, '+prenom+'!</div>'+
+    '<p class="success-sub">'+
+      'Ваш заказ <strong>'+key+'</strong> успешно зарегистрирован.<br><br>'+
+      '📧 <strong>Письмо с подтверждением отправлено</strong> на адрес <strong>'+email+'</strong><br>'+
+      '<span style="font-size:.7rem;color:#8a8580;">Отправитель: info@progic.jp — при необходимости проверьте папку "Спам".</span><br><br>'+
+      'В нём вы найдёте итог вашего заказа и сообщение от вашего консьержа.<br><br>'+
+      '⏱ <strong>Ваш консьерж свяжется с вами в течение 24 часов</strong>'+
+      ', чтобы начать подготовку вашего путешествия в Японию.'+
+      demo+
+    '</p>';
+  s.classList.add('active');
+  s.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function setHeroHeight() {
+  var nav=document.getElementById('siteNav'), hero=document.getElementById('hero');
+  if(nav && hero) hero.style.minHeight=(window.innerHeight-nav.offsetHeight)+'px';
+}
+window.addEventListener('resize', setHeroHeight);
+</script>
+</body>
+</html>
